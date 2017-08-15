@@ -8,10 +8,10 @@ export default class Functions {
     }
 }
 
-Functions.prototype.addFunction = function(context,func, callInFrame){
+Functions.prototype.addFunction = function(context,func, executeOnceInAnimationFrame){
     let entry;
 
-    if (callInFrame){
+    if (executeOnceInAnimationFrame){
         const ticker = new Ticker(context,func);
         entry = new Entry(ticker, ticker.execute);
         this.frameEntries.push(entry)
