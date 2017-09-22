@@ -8,12 +8,12 @@ export default class Functions {
     }
 }
 
-Functions.prototype.addFunction = function(context,func, executeOnceInAnimationFrame){
+Functions.prototype.add = function(context,func, executeLaterInNextAnimationFrame){
     let entry;
 
-    if (executeOnceInAnimationFrame){
+    if (executeLaterInNextAnimationFrame){
         const ticker = new Ticker(context,func);
-        entry = new Entry(ticker, ticker.execute);
+        entry = new Entry(ticker, ticker.callLater);
         this.frameEntries.push(entry)
     } else {
         entry = new Entry(context, func);
@@ -23,30 +23,29 @@ Functions.prototype.addFunction = function(context,func, executeOnceInAnimationF
 };
 
 Functions.prototype.trigger = function(){
-    const disposeIndicies = [];
+    const entriesIndexToDispose = [];
 
-    let entries = this.entries;
-    entries.forEach(function(entry, index){
+    this.entries.forEach(function(entry, index){
         if (entry.func) {
             entry.func.apply(entry.context || entry.func['this']);
         } else {
-            disposeIndicies.push(index);
+            entriesIndexToDispose.push(index);
         }
     });
-    disposeIndicies.forEach(function(entryIndex){
-        entries.splice(entryIndex,1);
+
+    entriesIndexToDispose.forEach(function(entryIndex){
+        this.entries.splice(entryIndex,1);
     });
 
-    let frameEntries = this.frameEntries;
-    frameEntries.forEach(function(entry, index){
+    this.frameEntries.forEach(function(entry, index){
         if (entry.func) {
             entry.func.apply(entry.context || entry.func['this']);
         } else {
-            disposeIndicies.push(index);
+            entriesIndexToDispose.push(index);
         }
     });
-    disposeIndicies.forEach(function(entryIndex){
-        frameEntries.splice(entryIndex,1);
+    entriesIndexToDispose.forEach(function(entryIndex){
+        this.frameEntries.splice(entryIndex,1);
     })
 
 };

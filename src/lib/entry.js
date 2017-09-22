@@ -1,10 +1,9 @@
 import Ticker from 'ticker';
 
 export default class Entry {
-    constructor(context, func, callInAnimationFrame){
+    constructor(context, func){
         this.context = context;
         this.func = func;
-        this.callInAnimationFrame = (callInAnimationFrame === undefined) ? false : callInAnimationFrame;
     }
 }
 
