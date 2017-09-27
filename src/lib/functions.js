@@ -8,12 +8,16 @@ export default class Functions {
     }
 }
 
-Functions.prototype.add = function(context,func, executeLaterInNextAnimationFrame){
+Functions.prototype.add = function(context,func, executeLaterInNextAnimationFrame, callLast){
     let entry;
-
     if (executeLaterInNextAnimationFrame){
         const ticker = new Ticker(context,func);
-        entry = new Entry(ticker, ticker.callLater);
+        if(callLast) {
+            entry = new Entry(ticker, ticker.executeLast);
+        }
+        else{
+            entry = new Entry(ticker, ticker.execute);
+        }
         this.frameEntries.push(entry)
     } else {
         entry = new Entry(context, func);
