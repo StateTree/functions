@@ -3,7 +3,7 @@ import Ticker from 'ticker';
 export default class Entry {
     constructor(context, func){
         this.context = context;
-        this.func = func;
+        this.listener = func;
     }
 }
 
@@ -12,5 +12,5 @@ Entry.prototype.dispose = function (){
         this.context.dispose();
     }
     this.context = null;
-    this.func = null;
+    this.listener = null;
 }
