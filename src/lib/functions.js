@@ -5,33 +5,67 @@ export default class Functions {
     constructor() {
         this.entries = [];
         this.frameEntries = [];
+        this.executingLaterInNextTickCount = 0;
     }
 }
 
-Functions.prototype.add = function(context,func, executeLaterInNextAnimationFrame, callLast){
+Functions.prototype.add = function(context,func, executeLaterInNextTick, priority = 0,  callback = null){
     let entry;
-    if (executeLaterInNextAnimationFrame){
-        const ticker = new Ticker(context,func);
-        if(callLast) {
-            entry = new Entry(ticker, ticker.executeLast);
-        }
-        else{
-            entry = new Entry(ticker, ticker.execute);
-        }
+    if (executeLaterInNextTick){
+
+	     const tickerCallback = () => {
+		    this.executingLaterInNextTickCount = this.executingLaterInNextTickCount - 1;
+		    if(callback){
+		    	callback.call(callback['this'])
+		    }
+	    };
+        const ticker = new Ticker(context,func, tickerCallback, priority);
+	    entry = new Entry(ticker, ticker.execute);
         this.frameEntries.push(entry)
     } else {
         entry = new Entry(context, func);
         this.entries.push(entry);
     }
-    return entry.dispose;
+};
+
+Functions.prototype.remove = function(context,func, callback = null){
+	let entry, i;
+	const {frameEntries, entries} = this;
+
+	for(i = 0; i < frameEntries.length; i++){
+	    const frameEntry =  frameEntries[i];
+		entry = frameEntry.context;
+		if(entry.context === context && entry.listener === func){
+			if(this.executingLaterInNextTickCount === 0){
+				frameEntry.dispose();
+			} else {
+				const tickerCallback = () => {
+					this.executingLaterInNextTickCount = this.executingLaterInNextTickCount - 1;
+					callback && callback()
+				};
+				const ticker = new Ticker(frameEntry,frameEntry.dispose, tickerCallback, 3);
+				ticker.execute();
+				this.executingLaterInNextTickCount = this.executingLaterInNextTickCount + 1
+			}
+			return;
+		}
+	}
+
+	for(i = 0; i < entries.length; i++){
+		entry = entries[i];
+		if(entry.context === context && entry.listener === func){
+			entry.dispose();
+			return;
+		}
+	}
 };
 
 Functions.prototype.trigger = function(){
     const entriesIndexToDispose = [];
 
-    this.entries.forEach(function(entry, index){
-        if (entry.func) {
-            entry.func.apply(entry.context || entry.func['this']);
+	this.entries.forEach(function(entry, index){
+        if (entry.listener) {
+            entry.listener.apply(entry.context || entry.listener['this']);
         } else {
             entriesIndexToDispose.push(index);
         }
@@ -39,17 +73,18 @@ Functions.prototype.trigger = function(){
 
     entriesIndexToDispose.forEach(function(entryIndex){
         this.entries.splice(entryIndex,1);
-    });
+    }, this);
 
     this.frameEntries.forEach(function(entry, index){
-        if (entry.func) {
-            entry.func.apply(entry.context || entry.func['this']);
+        if (entry.listener) {
+	        this.executingLaterInNextTickCount = this.executingLaterInNextTickCount + 1;
+            entry.listener.apply(entry.context || entry.listener['this']);
         } else {
             entriesIndexToDispose.push(index);
         }
-    });
+    }, this);
     entriesIndexToDispose.forEach(function(entryIndex){
         this.frameEntries.splice(entryIndex,1);
-    })
+    }, this)
 
 };
