@@ -9,7 +9,7 @@ export default class Functions {
     }
 }
 
-Functions.prototype.add = function(context,func, executeLaterInNextTick, priority = 0,  callback = null){
+Functions.prototype.addListener = function(context,func, executeLaterInNextTick = false, priority = 0,  callback = null){
     let entry;
     if (executeLaterInNextTick){
 
@@ -28,7 +28,7 @@ Functions.prototype.add = function(context,func, executeLaterInNextTick, priorit
     }
 };
 
-Functions.prototype.remove = function(context,func, callback = null){
+Functions.prototype.removeListener = function(context,func, callback = null){
 	let entry, i;
 	const {frameEntries, entries} = this;
 
@@ -60,7 +60,7 @@ Functions.prototype.remove = function(context,func, callback = null){
 	}
 };
 
-Functions.prototype.trigger = function(){
+Functions.prototype.triggerListeners = function(){
     const entriesIndexToDispose = [];
 
 	this.entries.forEach(function(entry, index){

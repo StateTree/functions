@@ -18,18 +18,18 @@ function frameFunctionSecond(){
 }
 const functions = new Functions();
 console.log(functions.executingLaterInNextTickCount);
-functions.add(window,frameFunctionSecond, true, 1);
-functions.add(window,frameFunction, true );
-functions.add(window,immediateFunction);
+functions.addListener(window,frameFunctionSecond, true, 1);
+functions.addListener(window,frameFunction, true );
+functions.addListener(window,immediateFunction);
 
 console.log("trigger 1");
 
-functions.trigger();
+functions.triggerListeners();
 // 2 entries
 
-functions.remove(window,frameFunctionSecond, functions.trigger.bind(functions));
+functions.removeListener(window,frameFunctionSecond, functions.triggerListeners.bind(functions));
 // 3rd entry
-functions.remove(window,immediateFunction);
+functions.removeListener(window,immediateFunction);
 
 console.log("trigger 2");
-functions.trigger();
+functions.triggerListeners();
