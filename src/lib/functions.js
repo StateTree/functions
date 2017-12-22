@@ -17,7 +17,6 @@ Functions.prototype.addListener = function(context,func, executeLaterInNextTick 
 
 	     const tickerCallback = () => {
 		    this.executingLaterInNextTickCount = this.executingLaterInNextTickCount - 1;
-		     console.log('callback: ',this.executingLaterInNextTickCount);
 		    if(callback){
 		    	callback.call(callback['this'])
 		    }
