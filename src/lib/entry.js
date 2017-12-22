@@ -7,7 +7,6 @@ export default class Entry {
     }
 }
 
-// Method available only on Entry instance not in Class
 Entry.prototype.dispose = function (){
     if(this.context instanceof Ticker){
         this.context.dispose();
