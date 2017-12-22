@@ -11,7 +11,17 @@ export default class Functions {
     }
 }
 
-Functions.prototype.addListener = function(context,func, executeLaterInNextTick = false, priority = 0, callback = null){
+Functions.prototype.setTriggerDoneNotifier = function(triggerDoneNotifier, frameTriggerDoneNotifier){
+	this.triggerDoneNotifier = triggerDoneNotifier;
+	this.frameTriggerDoneNotifier = frameTriggerDoneNotifier;
+}
+
+Functions.prototype.removeTriggerDoneNotifier = function(triggerDoneNotifier, frameTriggerDoneNotifier){
+	this.triggerDoneNotifier = null;
+	this.frameTriggerDoneNotifier = null;
+}
+
+Functions.prototype.addListener = function(context, func, executeLaterInNextTick = false, priority = 0, callback = null){
     let entry;
     if (executeLaterInNextTick){
 
@@ -24,7 +34,7 @@ Functions.prototype.addListener = function(context,func, executeLaterInNextTick 
 			    this.frameTriggerDoneNotifier &&  this.frameTriggerDoneNotifier();
 		    }
 	    };
-        const ticker = new Ticker(context,func, tickerCallback, priority);
+        const ticker = new Ticker(context, func, tickerCallback, priority);
 	    entry = new Entry(ticker, ticker.execute);
         this.frameEntries.push(entry)
     } else {
