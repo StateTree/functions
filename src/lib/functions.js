@@ -2,13 +2,14 @@ import Entry from './entry';
 import Ticker from 'ticker';
 
 export default class Functions {
-    constructor(triggerDoneNotifier, frameTriggerDoneNotifier) {
-        this.entries = [];
-        this.frameEntries = [];
-        this.executingLaterInNextTickCount = 0;
-        this.triggerDoneNotifier = triggerDoneNotifier;
-        this.frameTriggerDoneNotifier = frameTriggerDoneNotifier;
-    }
+	constructor(triggerDoneNotifier, frameTriggerDoneNotifier) {
+		this.entries = [];
+		this.frameEntries = [];
+		this.executingLaterInNextTickCount = 0;
+		this.triggerDoneNotifier = triggerDoneNotifier;
+		this.frameTriggerDoneNotifier = frameTriggerDoneNotifier;
+	}
+}
 
 Functions.prototype.addListener = function(context,func, executeLaterInNextTick = false, priority = 0, callback = null){
     let entry;
