@@ -4,6 +4,7 @@ import Functions from "./../lib";
 
 function immediateFunction(){
     console.log("I am Immediate Function");
+    console.log(functions.executingLaterInNextTickCount);
 }
 
 function frameFunction(){
