@@ -87,16 +87,21 @@ Functions.prototype.triggerListeners = function(){
     }, this);
 	this.triggerDoneNotifier && this.triggerDoneNotifier();
 
-    this.frameEntries.forEach(function(entry, index){
-        if (entry.listener) {
-	        this.executingLaterInNextTickCount = this.executingLaterInNextTickCount + 1;
-            entry.listener.apply(entry.context || entry.listener['this']);
-        } else {
-            entriesIndexToDispose.push(index);
-        }
-    }, this);
-    entriesIndexToDispose.forEach(function(entryIndex){
-        this.frameEntries.splice(entryIndex,1);
-    }, this)
+	if(this.frameEntries.length > 0){
+		this.frameEntries.forEach(function(entry, index){
+			if (entry.listener) {
+				this.executingLaterInNextTickCount = this.executingLaterInNextTickCount + 1;
+				entry.listener.apply(entry.context || entry.listener['this']);
+			} else {
+				entriesIndexToDispose.push(index);
+			}
+		}, this);
+		entriesIndexToDispose.forEach(function(entryIndex){
+			this.frameEntries.splice(entryIndex,1);
+		}, this)
+	} else {
+		this.frameTriggerDoneNotifier && this.frameTriggerDoneNotifier();
+	}
+
 
 };
