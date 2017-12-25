@@ -27,7 +27,7 @@ Functions.prototype.executeTriggerer = function(context, func){
 	if(this.executingLaterInNextTickCount === 0){
 		func.call(context)
 	} else {
-		const ticker = new Ticker(this, this.executeNowOrLater, null, 3);
+		const ticker = new Ticker(this, this.executeTriggerer, null, 3);
 		const entry = new Entry(ticker, ticker.execute);
 		this.frameEntries.push(entry);
 	}
