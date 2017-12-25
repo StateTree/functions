@@ -28,8 +28,7 @@ Functions.prototype.executeTriggerer = function(context, func){
 		func.call(context)
 	} else {
 		const ticker = new Ticker(this, this.executeTriggerer, null, 3);
-		const entry = new Entry(ticker, ticker.execute);
-		this.frameEntries.push(entry);
+		ticker.execute();
 	}
 };
 
