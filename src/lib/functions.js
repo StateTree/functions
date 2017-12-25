@@ -21,6 +21,18 @@ Functions.prototype.removeTriggerDoneNotifier = function(triggerDoneNotifier, fr
 	this.frameTriggerDoneNotifier = null;
 }
 
+// the function that responsible for initiating trigger
+// if called using this function will make a synced effect of execution
+Functions.prototype.executeTriggerer = function(context, func){
+	if(this.executingLaterInNextTickCount === 0){
+		func.call(context)
+	} else {
+		const ticker = new Ticker(this, this.executeNowOrLater, null, 3);
+		const entry = new Entry(ticker, ticker.execute);
+		this.frameEntries.push(entry);
+	}
+};
+
 Functions.prototype.addListener = function(context, func, executeLaterInNextTick = false, priority = 0, callback = null){
     let entry;
     if (executeLaterInNextTick){
