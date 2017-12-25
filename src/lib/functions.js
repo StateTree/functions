@@ -24,12 +24,15 @@ Functions.prototype.removeTriggerDoneNotifier = function(triggerDoneNotifier, fr
 // the function that responsible for initiating trigger
 // if called using this function will make a synced effect of execution
 Functions.prototype.executeTriggerer = function(context, func){
-	if(this.executingLaterInNextTickCount === 0){
-		func.call(context)
-	} else {
-		const ticker = new Ticker(this, this.executeTriggerer, null, 3);
-		ticker.execute();
-	}
+	const _executeTriggerer = ()=>{
+		if(this.executingLaterInNextTickCount === 0){
+			func.call(context);
+		} else {
+			const ticker = new Ticker(this, _executeTriggerer, null, 3);
+			ticker.execute();
+		}
+	};
+	_executeTriggerer();
 };
 
 Functions.prototype.addListener = function(context, func, executeLaterInNextTick = false, priority = 0, callback = null){
