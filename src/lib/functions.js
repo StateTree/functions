@@ -7,18 +7,15 @@ export default class Functions {
         this.frameEntries = [];
         this.executingLaterInNextTickCount = 0;
         this.triggerDoneNotifier = triggerDoneNotifier;
-        this.frameTriggerDoneNotifier = frameTriggerDoneNotifier;
     }
 }
 
-Functions.prototype.setTriggerDoneNotifier = function(triggerDoneNotifier, frameTriggerDoneNotifier){
+Functions.prototype.setTriggerDoneNotifier = function(triggerDoneNotifier){
 	this.triggerDoneNotifier = triggerDoneNotifier;
-	this.frameTriggerDoneNotifier = frameTriggerDoneNotifier;
 }
 
-Functions.prototype.removeTriggerDoneNotifier = function(triggerDoneNotifier, frameTriggerDoneNotifier){
+Functions.prototype.removeTriggerDoneNotifier = function(triggerDoneNotifier){
 	this.triggerDoneNotifier = null;
-	this.frameTriggerDoneNotifier = null;
 }
 
 // the function that responsible for initiating trigger
@@ -45,7 +42,7 @@ Functions.prototype.addListener = function(context, func, executeLaterInNextTick
 		    	callback.call(callback['this'])
 		    }
 		    if( this.executingLaterInNextTickCount === 0){
-			    this.frameTriggerDoneNotifier &&  this.frameTriggerDoneNotifier();
+			    this.triggerDoneNotifier &&  this.triggerDoneNotifier();
 		    }
 	    };
         const ticker = new Ticker(context, func, tickerCallback, priority);
@@ -107,7 +104,7 @@ Functions.prototype.triggerListeners = function(){
     entriesIndexToDispose.forEach(function(entryIndex){
         this.entries.splice(entryIndex,1);
     }, this);
-	this.triggerDoneNotifier && this.triggerDoneNotifier();
+
 
 	if(this.frameEntries.length > 0){
 		this.frameEntries.forEach(function(entry, index){
@@ -122,6 +119,6 @@ Functions.prototype.triggerListeners = function(){
 			this.frameEntries.splice(entryIndex,1);
 		}, this)
 	} else {
-		this.frameTriggerDoneNotifier && this.frameTriggerDoneNotifier();
+		this.triggerDoneNotifier && this.triggerDoneNotifier();
 	}
 };

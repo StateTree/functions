@@ -16,13 +16,10 @@ function frameFunctionSecond(){
 }
 
 function listenersDone(){
-	console.log("All Function executed");
+	console.log("All Function executed", functions.executingLaterInNextTickCount);
 }
 
-function frameFunctionDone(){
-	console.log("All frame Function executed", functions.executingLaterInNextTickCount);
-}
-const functions = new Functions(listenersDone,frameFunctionDone);
+const functions = new Functions(listenersDone);
 functions.addListener(window,frameFunctionSecond, true, 1);
 functions.addListener(window,frameFunction, true );
 functions.addListener(window,immediateFunction);
