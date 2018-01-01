@@ -14,18 +14,19 @@ Functions.prototype.setTriggerDoneNotifier = function(triggerDoneNotifier){
 	this.triggerDoneNotifier = triggerDoneNotifier;
 }
 
-Functions.prototype.removeTriggerDoneNotifier = function(triggerDoneNotifier){
+Functions.prototype.removeTriggerDoneNotifier = function(){
 	this.triggerDoneNotifier = null;
 }
 
 // the function that responsible for initiating trigger
 // if called using this function will make a synced effect of execution
-Functions.prototype.executeTriggerer = function(context, func){
+Functions.prototype.executeTriggerer = function(context, func, callback){
 	const _executeTriggerer = ()=>{
 		if(this.executingLaterInNextTickCount === 0){
 			func.call(context);
+			callback && callback()
 		} else {
-			const ticker = new Ticker(this, _executeTriggerer, null, 3);
+			const ticker = new Ticker(this, _executeTriggerer, callback, 3);
 			ticker.execute();
 		}
 	};
