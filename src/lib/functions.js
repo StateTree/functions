@@ -2,7 +2,7 @@ import Entry from './entry';
 import Ticker from 'ticker';
 
 export default class Functions {
-    constructor(triggerDoneNotifier, frameTriggerDoneNotifier) {
+    constructor(triggerDoneNotifier) {
         this.entries = [];
         this.frameEntries = [];
         this.executingLaterInNextTickCount = 0;
@@ -20,27 +20,33 @@ Functions.prototype.removeTriggerDoneNotifier = function(){
 
 // the function that responsible for initiating trigger
 // if called using this function will make a synced effect of execution
-Functions.prototype.executeTriggerer = function(context, func, callback){
+Functions.prototype.executeTriggerer = function(context, func, triggererCallback){
 	const _executeTriggerer = ()=>{
+		let ticker;
 		if(this.executingLaterInNextTickCount === 0){
 			func.call(context);
-			callback && callback()
+			if(this.executingLaterInNextTickCount === 0){
+				triggererCallback && triggererCallback();
+			} else {
+				ticker = new Ticker(this, triggererCallback, null, 3);
+				ticker.execute();
+			}
 		} else {
-			const ticker = new Ticker(this, _executeTriggerer, callback, 3);
+			ticker = new Ticker(this, _executeTriggerer, triggererCallback, 3);
 			ticker.execute();
 		}
 	};
 	_executeTriggerer();
 };
 
-Functions.prototype.addListener = function(context, func, executeLaterInNextTick = false, priority = 0, callback = null){
+Functions.prototype.addListener = function(context, func, executeLaterInNextTick = false, priority = 0, listenerCallback = null){
     let entry;
     if (executeLaterInNextTick){
 
 	     const tickerCallback = () => {
 		    this.executingLaterInNextTickCount = this.executingLaterInNextTickCount - 1;
-		    if(callback){
-		    	callback.call(callback['this'])
+		    if(listenerCallback){
+			    listenerCallback.call(listenerCallback['this'])
 		    }
 		    if( this.executingLaterInNextTickCount === 0){
 			    this.triggerDoneNotifier &&  this.triggerDoneNotifier();
