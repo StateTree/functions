@@ -25,9 +25,11 @@ functions.addListener(window,immediateFunction);
 console.log("trigger 1");
 
 functions.triggerListeners();
+
 // 2 entries
 functions.removeListener(window,frameFunctionSecond, functions.triggerListeners.bind(functions));
 console.log("Remove frame function");
+
 // 3rd entry
 functions.removeListener(window,immediateFunction);
 console.log("Remove Immediate function");
