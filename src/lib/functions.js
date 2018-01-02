@@ -21,7 +21,7 @@ Functions.prototype.removeTriggerDoneNotifier = function(){
 // the function that responsible for initiating trigger
 // if called using this function will make a synced effect of execution
 Functions.prototype.executeTriggerer = function(context, func, triggererCallback){
-	const _executeTriggerer = (triggeredAgain)=>{
+	const _executeTriggerer = (triggeredAgain = false)=>{
 		let ticker;
 		if(this.executingLaterInNextTickCount === 0){
 			func.call(context);
@@ -45,7 +45,7 @@ Functions.prototype.addListener = function(context, func, executeLaterInNextTick
     let entry;
     if (executeLaterInNextTick){
 
-	     const tickerCallback = (triggeredAgain) => {
+	     const tickerCallback = (triggeredAgain = false) => {
 		    this.executingLaterInNextTickCount = this.executingLaterInNextTickCount - 1;
 		    if(listenerCallback){
 			    listenerCallback.call(listenerCallback['this'], triggeredAgain)
@@ -75,7 +75,7 @@ Functions.prototype.removeListener = function(context,func, callback = null){
 				frameEntry.dispose();
 			} else { // frame trigger Listeners are still running
 				let tickerEntry;
-				const disposeDoneNotifier = (triggeredAgain) => {
+				const disposeDoneNotifier = (triggeredAgain = false) => {
 					if (this.executingLaterInNextTickCount === 0) {
 						callback && callback(triggeredAgain);
 					} else{
