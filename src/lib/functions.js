@@ -25,11 +25,13 @@ Functions.prototype.executeTriggerer = function(context, func, triggererCallback
 		let ticker;
 		if(this.executingLaterInNextTickCount === 0){
 			func.call(context);
-			if(this.executingLaterInNextTickCount === 0){
-				triggererCallback && triggererCallback();
-			} else {
-				ticker = new Ticker(this, triggererCallback, null, 3);
-				ticker.execute();
+			if(triggererCallback){
+				if(this.executingLaterInNextTickCount === 0){
+					triggererCallback && triggererCallback();
+				} else {
+					ticker = new Ticker(this, triggererCallback, null, 3);
+					ticker.execute();
+				}
 			}
 		} else {
 			ticker = new Ticker(this, _executeTriggerer, triggererCallback, 3);
