@@ -2,20 +2,11 @@ import Entry from './entry';
 import Ticker from 'ticker';
 
 export default class Functions {
-    constructor(triggerDoneNotifier) {
+    constructor() {
         this.entries = [];
         this.frameEntries = [];
         this.executingLaterInNextTickCount = 0;
-        this.triggerDoneNotifier = triggerDoneNotifier;
     }
-}
-
-Functions.prototype.setTriggerDoneNotifier = function(triggerDoneNotifier){
-	this.triggerDoneNotifier = triggerDoneNotifier;
-}
-
-Functions.prototype.removeTriggerDoneNotifier = function(){
-	this.triggerDoneNotifier = null;
 }
 
 // the function that responsible for initiating trigger
@@ -51,7 +42,7 @@ Functions.prototype.addListener = function(context, func, executeLaterInNextTick
 			    listenerCallback.call(listenerCallback['this'])
 		    }
 		    if( this.executingLaterInNextTickCount === 0){
-			    this.triggerDoneNotifier &&  this.triggerDoneNotifier();
+			    this.listenersExecutionCompleted();
 		    }
 	    };
         const ticker = new Ticker(context, func, tickerCallback, priority);
@@ -62,6 +53,10 @@ Functions.prototype.addListener = function(context, func, executeLaterInNextTick
         this.entries.push(entry);
     }
 };
+
+Functions.prototype.listenersExecutionCompleted = function(){
+
+}
 
 Functions.prototype.removeListener = function(context,func, callback = null){
 	let entry, i;
@@ -128,6 +123,6 @@ Functions.prototype.triggerListeners = function(){
 			this.frameEntries.splice(entryIndex,1);
 		}, this)
 	} else {
-		this.triggerDoneNotifier && this.triggerDoneNotifier();
+		this.listenersExecutionCompleted();
 	}
 };
