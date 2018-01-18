@@ -11,21 +11,21 @@ export default class Functions {
 
 // the function that responsible for initiating trigger
 // if called using this function will make a synced effect of execution
-Functions.prototype.executeTriggerer = function(context, func, triggererCallback){
+Functions.prototype.executeTriggerer = function(context, triggerInitiatingfunction, triggererCallback){
 	const _executeTriggerer = ()=>{
 		let ticker;
 		if(this.executingLaterInNextTickCount === 0){
-			func.call(context);
+			triggerInitiatingfunction.call(context);
 			if(triggererCallback){
 				if(this.executingLaterInNextTickCount === 0){
 					triggererCallback && triggererCallback();
 				} else {
-					ticker = new Ticker(this, triggererCallback, null, 3);
+					ticker = new Ticker(this, triggererCallback, null, 2);
 					ticker.execute();
 				}
 			}
 		} else {
-			ticker = new Ticker(this, _executeTriggerer, triggererCallback, 3);
+			ticker = new Ticker(this, _executeTriggerer, triggererCallback, 2);
 			ticker.execute();
 		}
 	};
@@ -33,6 +33,7 @@ Functions.prototype.executeTriggerer = function(context, func, triggererCallback
 };
 
 Functions.prototype.addListener = function(context, func, executeLaterInNextTick = false, priority = 0, listenerCallback = null){
+	Functions.stackDebug && console.log("Functions: triggerListeners : addListener: ", this);
     let entry;
     if (executeLaterInNextTick){
 
@@ -42,21 +43,24 @@ Functions.prototype.addListener = function(context, func, executeLaterInNextTick
 			    listenerCallback.call(listenerCallback['this'])
 		    }
 		    if( this.executingLaterInNextTickCount === 0){
+			    Functions.stackDebug && console.log("Functions: triggerListeners : listenersExecutionCompleted: ", this);
 			    this.listenersExecutionCompleted();
 		    }
 	    };
         const ticker = new Ticker(context, func, tickerCallback, priority);
 	    entry = new Entry(ticker, ticker.execute);
+	    Functions.stackDebug && console.log("Functions: triggerListeners : addListener: frameEntries: ", entry);
         this.frameEntries.push(entry)
     } else {
         entry = new Entry(context, func);
+	    Functions.stackDebug && console.log("Functions: triggerListeners : addListener: entries: ", entry);
         this.entries.push(entry);
     }
 };
 
 Functions.prototype.listenersExecutionCompleted = function(){
 
-}
+};
 
 Functions.prototype.removeListener = function(context,func, callback = null){
 	let entry, i;
@@ -96,6 +100,7 @@ Functions.prototype.removeListener = function(context,func, callback = null){
 };
 
 Functions.prototype.triggerListeners = function(){
+	Functions.stackDebug && console.log("Functions: triggerListeners ", this);
     const entriesIndexToDispose = [];
 
 	this.entries.forEach(function(entry, index){
@@ -123,6 +128,9 @@ Functions.prototype.triggerListeners = function(){
 			this.frameEntries.splice(entryIndex,1);
 		}, this)
 	} else {
+		Functions.stackDebug && console.log("Functions: triggerListeners : listenersExecutionCompleted: ", this);
 		this.listenersExecutionCompleted();
 	}
 };
+
+Functions.stackDebug = false;
