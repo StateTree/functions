@@ -63,6 +63,11 @@ Functions.prototype.listenersWillExecute = function(){
 
 };
 
+Functions.prototype.shouldListenersExecute = function(){
+	Functions.stackDebug && console.log("Functions: triggerListeners : shouldListenersExecute: ", true, this);
+	return true;
+};
+
 Functions.prototype.listenersDidExecute = function(){
 
 };
@@ -105,38 +110,42 @@ Functions.prototype.removeListener = function(context,func, callback = null){
 };
 
 Functions.prototype.triggerListeners = function(){
-	Functions.stackDebug && console.log("Functions: triggerListeners : listenersWillExecute: ", this);
-    this.listenersWillExecute();
-	Functions.stackDebug && console.log("Functions: triggerListeners ", this);
-	const entriesIndexToDispose = [];
-	this.entries.forEach(function(entry, index){
-        if (entry.listener) {
-            entry.listener.apply(entry.context || entry.listener['this']);
-        } else {
-            entriesIndexToDispose.push(index);
-        }
-    });
-    entriesIndexToDispose.forEach(function(entryIndex){
-        this.entries.splice(entryIndex,1);
-    }, this);
-
-
-	if(this.frameEntries.length > 0){
-		this.frameEntries.forEach(function(entry, index){
+	const shouldTrigger = this.shouldListenersExecute();
+	if(shouldTrigger){
+		Functions.stackDebug && console.log("Functions: triggerListeners : listenersWillExecute: ", this);
+		this.listenersWillExecute();
+		Functions.stackDebug && console.log("Functions: triggerListeners ", this);
+		const entriesIndexToDispose = [];
+		this.entries.forEach(function(entry, index){
 			if (entry.listener) {
-				this.executingLaterInNextTickCount = this.executingLaterInNextTickCount + 1;
 				entry.listener.apply(entry.context || entry.listener['this']);
 			} else {
 				entriesIndexToDispose.push(index);
 			}
-		}, this);
+		});
 		entriesIndexToDispose.forEach(function(entryIndex){
-			this.frameEntries.splice(entryIndex,1);
-		}, this)
-	} else {
-		Functions.stackDebug && console.log("Functions: triggerListeners : listenersDidExecute: ", this);
-		this.listenersDidExecute();
+			this.entries.splice(entryIndex,1);
+		}, this);
+
+
+		if(this.frameEntries.length > 0){
+			this.frameEntries.forEach(function(entry, index){
+				if (entry.listener) {
+					this.executingLaterInNextTickCount = this.executingLaterInNextTickCount + 1;
+					entry.listener.apply(entry.context || entry.listener['this']);
+				} else {
+					entriesIndexToDispose.push(index);
+				}
+			}, this);
+			entriesIndexToDispose.forEach(function(entryIndex){
+				this.frameEntries.splice(entryIndex,1);
+			}, this)
+		} else {
+			Functions.stackDebug && console.log("Functions: triggerListeners : listenersDidExecute: ", this);
+			this.listenersDidExecute();
+		}
 	}
+
 };
 
 Functions.stackDebug = false;
