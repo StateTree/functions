@@ -1,5 +1,5 @@
 import Functions from "./../lib";
-
+Functions.stackDebug = false;
 function immediateFunction(){
     console.log("I am Immediate Function");
     console.log(functions.executingLaterInNextTickCount);
