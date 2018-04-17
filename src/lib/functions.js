@@ -69,7 +69,7 @@ Functions.prototype.shouldListenersExecute = function(){
 };
 
 Functions.prototype.listenersDidExecute = function(){
-
+	this.next && this.next();
 };
 
 Functions.prototype.removeListener = function(context,func, callback = null){
@@ -108,6 +108,14 @@ Functions.prototype.removeListener = function(context,func, callback = null){
 		}
 	}
 };
+
+Functions.prototype.setNext = function(next){
+	this.next = next;
+}
+
+Functions.prototype.removeNext = function(){
+	this.next = null;
+}
 
 Functions.prototype.triggerListeners = function(){
 	const shouldTrigger = this.shouldListenersExecute();
