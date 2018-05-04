@@ -6,6 +6,8 @@ export default class Functions {
         this.entries = [];
         this.frameEntries = [];
         this.executingLaterInNextTickCount = 0;
+        this.connector = null; // connector is responsible for sequencing functions
+	    this.enableConnector = true;
     }
 }
 
@@ -69,7 +71,7 @@ Functions.prototype.shouldListenersExecute = function(){
 };
 
 Functions.prototype.listenersDidExecute = function(){
-	this.next && this.next();
+	this.enableConnector && this.connector && this.connector();
 };
 
 Functions.prototype.removeListener = function(context,func, callback = null){
@@ -109,12 +111,20 @@ Functions.prototype.removeListener = function(context,func, callback = null){
 	}
 };
 
-Functions.prototype.setNext = function(next){
-	this.next = next;
+Functions.prototype.setConnector = function(connector){
+	this.connector = connector;
 }
 
-Functions.prototype.removeNext = function(){
-	this.next = null;
+Functions.prototype.removeConnector = function(){
+	this.connector = null;
+}
+
+Functions.prototype.linkConnector = function(){
+	this.enableConnector = true;
+}
+
+Functions.prototype.unLinkConnector = function(){
+	this.enableConnector = false;
 }
 
 Functions.prototype.triggerListeners = function(){
