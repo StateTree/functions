@@ -1,169 +1,136 @@
+import Ticker from '@statetree/ticker';
+import {executeFunction, clearDisposedEntries, executeEntries} from './helpers';
 import Entry from './entry';
-import Ticker from 'ticker';
 
 export default class Functions {
-    constructor() {
+    constructor(connector = null) {
         this.entries = [];
         this.frameEntries = [];
-        this.executingLaterInNextTickCount = 0;
-        this.connector = null; // connector is responsible for sequencing functions
+        this.remainingEntries = 0;
+        this.connector = connector; // connector is responsible for sequencing next function set
 	    this.enableConnector = true;
     }
-}
 
-// the function that responsible for initiating trigger
-// if called using this function will make a synced effect of execution
-Functions.prototype.executeTriggerer = function(context, triggerInitiatingfunction, triggererCallback){
-	const _executeTriggerer = ()=>{
-		let ticker;
-		if(this.executingLaterInNextTickCount === 0){
-			triggerInitiatingfunction.call(context);
-			if(triggererCallback){
-				if(this.executingLaterInNextTickCount === 0){
-					triggererCallback && triggererCallback();
-				} else {
-					ticker = new Ticker(this, triggererCallback, null, 2);
-					ticker.execute();
-				}
-			}
-		} else {
-			ticker = new Ticker(this, _executeTriggerer, triggererCallback, 2);
-			ticker.execute();
-		}
-	};
-	_executeTriggerer();
-};
-
-Functions.prototype.addListener = function(context, func, executeLaterInNextTick = false, priority = 0, listenerCallback = null){
-	Functions.stackDebug && console.log("Functions: triggerListeners : addListener: ", this);
-    let entry;
-    if (executeLaterInNextTick){
-
-	     const tickerCallback = (triggeredAgain = false) => {
-		    this.executingLaterInNextTickCount = this.executingLaterInNextTickCount - 1;
-		    if(listenerCallback){
-			    listenerCallback.call(listenerCallback['this'])
-		    }
-		    if( this.executingLaterInNextTickCount === 0){
-			    Functions.stackDebug && console.log("Functions: triggerListeners : listenersDidExecute: ", this);
-			    this.listenersDidExecute();
+	trigger(callback = null){
+    	 const _trigger = ()=>{
+		    const shouldTrigger = this.shouldExecuteFunctions();
+		    if(shouldTrigger){
+			    this.functionsWillExecute();
+			    if(this.entries.length > 0){
+				    executeEntries.call(this);
+			    }
+			    if(this.frameEntries.length > 0){
+				    executeEntries.call(this, true);
+			    }
 		    }
 	    };
-        const ticker = new Ticker(context, func, tickerCallback, priority, ignoreIfAdded);
-	    entry = new Entry(ticker, ticker.execute);
-	    Functions.stackDebug && console.log("Functions: triggerListeners : addListener: frameEntries: ", entry);
-        this.frameEntries.push(entry)
-    } else {
-        entry = new Entry(context, func);
-	    Functions.stackDebug && console.log("Functions: triggerListeners : addListener: entries: ", entry);
-        this.entries.push(entry);
-    }
-};
-
-
-Functions.prototype.listenersWillExecute = function(){
-
-};
-
-Functions.prototype.shouldListenersExecute = function(){
-	Functions.stackDebug && console.log("Functions: triggerListeners : shouldListenersExecute: ", true, this);
-	return true;
-};
-
-Functions.prototype.listenersDidExecute = function(){
-	this.enableConnector && this.connector && this.connector();
-};
-
-Functions.prototype.removeListener = function(context,func, callback = null){
-	let entry, i;
-	const {frameEntries, entries} = this;
-
-	for(i = 0; i < frameEntries.length; i++){
-	    const frameEntry =  frameEntries[i];
-		entry = frameEntry.context;
-		if(entry.context === context && entry.listener === func){
-			if(this.executingLaterInNextTickCount === 0){
-				frameEntry.dispose();
-			} else { // frame trigger Listeners are still running
-				let tickerEntry;
-				const disposeDoneNotifier = (triggeredAgain = false) => {
-					if (this.executingLaterInNextTickCount === 0) {
-						callback && callback(triggeredAgain);
-					} else{
-						tickerEntry = new Ticker(frameEntry,frameEntry.dispose, disposeDoneNotifier, 3);
-						tickerEntry.execute();
-					}
-				};
-				tickerEntry = new Ticker(frameEntry,frameEntry.dispose, disposeDoneNotifier, 3);
-				tickerEntry.execute();
-			}
-			return;
-		}
-	}
-
-	for(i = 0; i < entries.length; i++){
-		entry = entries[i];
-		if(entry.context === context && entry.listener === func){
-			entry.dispose();
-			callback && callback();
-			return;
-		}
-	}
-};
-
-Functions.prototype.setConnector = function(connector){
-	this.connector = connector;
-}
-
-Functions.prototype.removeConnector = function(){
-	this.connector = null;
-}
-
-Functions.prototype.linkConnector = function(){
-	this.enableConnector = true;
-}
-
-Functions.prototype.unLinkConnector = function(){
-	this.enableConnector = false;
-}
-
-Functions.prototype.triggerListeners = function(){
-	const shouldTrigger = this.shouldListenersExecute();
-	if(shouldTrigger){
-		Functions.stackDebug && console.log("Functions: triggerListeners : listenersWillExecute: ", this);
-		this.listenersWillExecute();
-		Functions.stackDebug && console.log("Functions: triggerListeners ", this);
-		const entriesIndexToDispose = [];
-		this.entries.forEach(function(entry, index){
-			if (entry.listener) {
-				entry.listener.apply(entry.context || entry.listener['this']);
+		const doneNotifier = ()=>{
+			if(this.remainingEntries === 0){
+				callback && callback.call(callback['this'])
+				this.functionsDidExecute();
 			} else {
-				entriesIndexToDispose.push(index);
+				executeFunction.call(this, doneNotifier);
 			}
-		});
-		entriesIndexToDispose.forEach(function(entryIndex){
-			this.entries.splice(entryIndex,1);
-		}, this);
+		};
+		executeFunction.call(this, _trigger, doneNotifier);
+	};
+	
 
+	addFunction(func, context = null, executeLaterInNextTick = false, priority = 0, callback = null){
+		const _addFunction = () => {
+			console.log('addFunction')
+			let entry;
+			if (executeLaterInNextTick){
+				const doneNotifier = () => {
+					this.remainingEntries = this.remainingEntries - 1;
+				};
+				const ticker = new Ticker(func,context, priority);
+				ticker.onDone(doneNotifier);
+				entry = new Entry(ticker.executeInCycle, ticker);
+				this.frameEntries.push(entry);
+			} else {
+				entry = new Entry(func, context);
+				this.entries.push(entry);
+			}
+			callback && callback.call(callback['this'], entry)
+		};
+		executeFunction.call(this,_addFunction);
+	};
 
-		if(this.frameEntries.length > 0){
-			this.frameEntries.forEach(function(entry, index){
-				if (entry.listener) {
-					this.executingLaterInNextTickCount = this.executingLaterInNextTickCount + 1;
-					entry.listener.apply(entry.context || entry.listener['this']);
-				} else {
-					entriesIndexToDispose.push(index);
+	removeFunction(func, context = null, callback = null){
+		const _removeListener = ()=> {
+			let entry, i;
+			const {frameEntries, entries} = this;
+
+			for(i = 0; i < entries.length; i++){
+				entry = entries[i];
+				if(entry.func) {
+					if(entry.func === func && entry.context === context){
+						entry.dispose();
+						clearDisposedEntries(i, entries);
+						callback && callback();
+						return;
+					}
 				}
-			}, this);
-			entriesIndexToDispose.forEach(function(entryIndex){
-				this.frameEntries.splice(entryIndex,1);
-			}, this)
-		} else {
-			Functions.stackDebug && console.log("Functions: triggerListeners : listenersDidExecute: ", this);
-			this.listenersDidExecute();
+			}
+
+			for(i = 0; i < frameEntries.length; i++){
+				const frameEntry =  frameEntries[i];
+				entry = frameEntry.context;
+				if(entry && entry.func === func && entry.context === context){
+					frameEntry.dispose();
+					clearDisposedEntries(i, frameEntries);
+					callback && callback();
+					return;
+				}
+			}
+
 		}
+		executeFunction.call(this,_removeListener);
+
+	};
+
+
+	functionsWillExecute(){
+
+	};
+
+	shouldExecuteFunctions(){
+		return true;
+	};
+
+	functionsDidExecute(){
+		this.enableConnector && this.connector && this.connector();
+	};
+
+
+	setConnector(connector){
+		const _setConnector = () => {
+			this.connector = connector;
+		}
+		executeFunction.call(this,_setConnector);
+
 	}
 
-};
+	removeConnector(){
+		const _removeConnector = () => {
+			this.connector = null;
+		};
+		executeFunction.call(this,_removeConnector);
+	}
 
-Functions.stackDebug = false;
+	linkConnector(){
+		const _linkConnector = () => {
+			this.enableConnector = true;
+		};
+		executeFunction.call(this,_linkConnector);
+
+	}
+
+	unLinkConnector(){
+		const _unLinkConnector = () => {
+			this.enableConnector = false;
+		};
+		executeFunction.call(this,_unLinkConnector);
+	}
+}

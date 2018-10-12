@@ -1,9 +1,9 @@
-import Ticker from 'ticker';
+import Ticker from '@statetree/ticker';
 
 export default class Entry {
-    constructor(context, func){
+    constructor(func, context = null){
         this.context = context;
-        this.listener = func;
+        this.func = func;
     }
 }
 
@@ -13,5 +13,5 @@ Entry.prototype.dispose = function (){
         this.context.dispose();
     }
     this.context = null;
-    this.listener = null;
+    this.func = null;
 }
