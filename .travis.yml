@@ -9,12 +9,6 @@ script:
   - npm run report-coverage
   - npm run build
 deploy:
-  - provider: pages
-    skip_cleanup: true
-    github_token: $GH_TOKEN
-    local_dir: build
-    on:
-      branch: master
   - provider: npm
     skip_cleanup: true
     email: $NPM_EMAIL
