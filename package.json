@@ -16,14 +16,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/StateTree/function-collection.git"
+    "url": "git+https://github.com/StateTree/functions.git"
   },
   "author": "Sanjay Krishna Anbalagan",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/StateTree/function-collection/issues"
+    "url": "https://github.com/StateTree/functions/issues"
   },
-  "homepage": "https://github.com/StateTree/function-collection#readme",
+  "homepage": "https://github.com/StateTree/functions#readme",
   "devDependencies": {
     "@babel/cli": "^7.1.2",
     "@babel/core": "^7.1.2",
@@ -53,6 +53,11 @@
   "files": [
     "lib"
   ],
+  "config": {
+    "ghooks": {
+      "pre-commit": "npm run test"
+    }
+  },
   "dependencies": {
     "@statetree/ticker": "^3.1.4"
   },
