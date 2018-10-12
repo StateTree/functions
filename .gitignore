@@ -6,3 +6,4 @@ coverage
 *.lcov
 demo
 build
+lib
