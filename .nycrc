@@ -1,0 +1,25 @@
+{
+    "include": [
+        "src/lib/*.js"
+    ],
+    "exclude": [
+        "build",
+        "lib",
+        "manual",
+        "node_modules",
+        "scripts",
+        "src/demo",
+        "test"
+    ],
+    "require": [
+        "@babel/register"
+    ],
+    "extension": [
+        ".js"
+    ],
+    "cache": true,
+    "check-coverage": true,
+    "all": true,
+    "sourceMap": false,
+    "instrument": false
+}

@@ -1,38 +1,54 @@
 import Functions from "./../lib";
+import {expect} from "chai";
 Functions.stackDebug = false;
+
+
 function immediateFunction(){
-    console.log("I am Immediate Function");
-    console.log(functions.executingLaterInNextTickCount);
+    console.log("I am Immediate Function", functions.remainingEntries);
 }
 
 function frameFunction(){
-    console.log("I am Frame Function", functions.executingLaterInNextTickCount);
+    console.log("I am first Frame Function", functions.remainingEntries);
 }
 
 function frameFunctionSecond(){
-    console.log("I am Frame Function Second", functions.executingLaterInNextTickCount);
+    console.log("I am second Frame Function", functions.remainingEntries);
 }
 
+let executed = false
 function listenersDone(){
-	console.log("All Function executed", functions.executingLaterInNextTickCount);
+	executed = true
+	console.log("All Function execu ted", functions.remainingEntries);
 }
 
-const functions = new Functions(listenersDone);
-functions.addListener(window,frameFunctionSecond, true, 1);
-functions.addListener(window,frameFunction, true );
-functions.addListener(window,immediateFunction);
 
-console.log("trigger 1");
 
-functions.triggerListeners();
+/*const functions = new Functions(listenersDone);
+functions.addFunction(frameFunctionSecond, null, true, 1);
+functions.addFunction(frameFunction, null,true );
+functions.addFunction(immediateFunction);
+functions.trigger(function(){
+	console.log("trigger 1 done");
+});
 
-// 2 entries
-functions.removeListener(window,frameFunctionSecond, functions.triggerListeners.bind(functions));
-console.log("Remove frame function");
+functions.removeFunction(frameFunctionSecond);
+functions.removeFunction(immediateFunction);
+functions.trigger(function(){
+	console.log("trigger 2 done");
+});*/
 
-// 3rd entry
-functions.removeListener(window,immediateFunction);
-console.log("Remove Immediate function");
-
-console.log("trigger 2");
-functions.triggerListeners();
+const functions = new Functions();
+functions.addFunction(frameFunction, {name: 'frameFunction'}, true, 0,(entry)=>{
+	console.log('Done adding frame Func');
+});
+functions.addFunction(frameFunctionSecond, null, true, 0,(entry)=>{
+	console.log('Done adding frame Func second');
+});
+functions.setConnector(listenersDone);
+functions.trigger(()=>{
+	console.log('Trigger 1 callback');
+});
+functions.removeFunction(frameFunctionSecond);
+functions.trigger(()=>{
+	console.log('Trigger 2 callback');
+});
