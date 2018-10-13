@@ -2,6 +2,7 @@
 [![Build Status](https://travis-ci.com/StateTree/functions.svg?branch=master)](https://travis-ci.com/StateTree/functions)
 [![Code Coverage](https://codecov.io/gh/StateTree/functions/branch/master/graph/badge.svg)](https://codecov.io/gh/StateTree/functions/branch/master/graph/badge.svg)
 
+[Docs](https://statetree.github.io/functions/docs/)
 
 # What?
 * Collection of functions which are executed in the order they are added

@@ -23,7 +23,7 @@
   "bugs": {
     "url": "https://github.com/StateTree/functions/issues"
   },
-  "homepage": "https://github.com/StateTree/functions#readme",
+  "homepage": "https://statetree.github.io/functions/docs/",
   "devDependencies": {
     "@babel/cli": "^7.1.2",
     "@babel/core": "^7.1.2",
