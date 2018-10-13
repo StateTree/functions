@@ -1,6 +1,6 @@
 {
   "name": "@statetree/functions",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "cluster of function that can be chained to create a pipeline ",
   "main": "lib/functions.js",
   "scripts": {
@@ -23,7 +23,7 @@
   "bugs": {
     "url": "https://github.com/StateTree/functions/issues"
   },
-  "homepage": "https://github.com/StateTree/functions#readme",
+  "homepage": "https://statetree.github.io/functions/docs/",
   "devDependencies": {
     "@babel/cli": "^7.1.2",
     "@babel/core": "^7.1.2",
