@@ -10,7 +10,6 @@
 npm install --save @statetree/functions
 ```
 
-
 [Docs](https://statetree.github.io/functions/docs/)
 
 # What?
