@@ -1,3 +1,7 @@
 import Functions from './functions';
+import {executeLater} from './helpers';
 
-export default Functions;
+export {
+	Functions as default,
+	executeLater
+}
