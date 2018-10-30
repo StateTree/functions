@@ -1,5 +1,5 @@
 import Ticker from '@statetree/ticker';
-import {executeFunction, clearDisposedEntries, executeEntries} from './helpers';
+import {executeLater, clearDisposedEntries, executeEntries} from './helpers';
 import Entry from './entry';
 
 export default class Functions {
@@ -29,16 +29,15 @@ export default class Functions {
 				callback && callback.call(callback['this'])
 				this.functionsDidExecute();
 			} else {
-				executeFunction.call(this, doneNotifier);
+				executeLater.call(this, doneNotifier);
 			}
 		};
-		executeFunction.call(this, _trigger, doneNotifier);
+		executeLater.call(this, _trigger, doneNotifier);
 	};
 	
 
 	addFunction(func, context = null, executeLaterInNextTick = false, priority = 0, callback = null){
 		const _addFunction = () => {
-			console.log('addFunction')
 			let entry;
 			if (executeLaterInNextTick){
 				const doneNotifier = () => {
@@ -54,7 +53,7 @@ export default class Functions {
 			}
 			callback && callback.call(callback['this'], entry)
 		};
-		executeFunction.call(this,_addFunction);
+		executeLater.call(this,_addFunction);
 	};
 
 	removeFunction(func, context = null, callback = null){
@@ -86,7 +85,7 @@ export default class Functions {
 			}
 
 		}
-		executeFunction.call(this,_removeListener);
+		executeLater.call(this,_removeListener);
 
 	};
 
@@ -108,7 +107,7 @@ export default class Functions {
 		const _setConnector = () => {
 			this.connector = connector;
 		}
-		executeFunction.call(this,_setConnector);
+		executeLater.call(this,_setConnector);
 
 	}
 
@@ -116,14 +115,14 @@ export default class Functions {
 		const _removeConnector = () => {
 			this.connector = null;
 		};
-		executeFunction.call(this,_removeConnector);
+		executeLater.call(this,_removeConnector);
 	}
 
 	linkConnector(){
 		const _linkConnector = () => {
 			this.enableConnector = true;
 		};
-		executeFunction.call(this,_linkConnector);
+		executeLater.call(this,_linkConnector);
 
 	}
 
@@ -131,6 +130,6 @@ export default class Functions {
 		const _unLinkConnector = () => {
 			this.enableConnector = false;
 		};
-		executeFunction.call(this,_unLinkConnector);
+		executeLater.call(this,_unLinkConnector);
 	}
 }

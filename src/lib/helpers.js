@@ -1,20 +1,20 @@
 import Ticker from "@statetree/ticker/lib/ticker";
 
-export function executeFunction(apiFunc, callback){
-	const _executeFunction = ()=>{
+export function executeLater(apiFunc, callback){
+	const _executeLater = ()=>{
 		let ticker;
 		if(this.remainingEntries < 0){
-			throw new Error("FUnctin")
+			throw new Error("There can't negative entries")
 		}
 		if(this.remainingEntries === 0){ // execute API calls Only after all user added functions are executed
 			apiFunc.call(this);
 			callback && callback.call(callback['this']);
 		} else {
-			ticker = new Ticker(_executeFunction, this, 2);
+			ticker = new Ticker(_executeLater, this, 2);
 			ticker.executeInCycle()
 		}
 	};
-	_executeFunction();
+	_executeLater();
 };
 
 export function executeEntry(entry, index, disposedEntriesIndex, callLater = false){
