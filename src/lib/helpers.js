@@ -1,47 +1,78 @@
-import Ticker from "@statetree/ticker/lib/ticker";
+import Ticker from "@statetree/ticker";
 
-export function executeLater(apiFunc, callback){
+/**
+ * Based on return value of predicate, this function decides whether to execute the method immediately or in frame cycle
+ *
+ * @param {function} predicate.
+ * @param {function} apiFunc
+ * @param {function} callback, Api func execution may be sync or Async, if its sync we cant return notifier as user can register doneCallback after API invocation
+ * @param {function} errorCallback.
+ * @return {void}
+ */
+export function executeInSyncOrAsync(predicate, apiFunc, callback, errorCallback){
+	// Important to create inside closure to execute in Ticker
 	const _executeLater = ()=>{
-		let ticker;
-		if(this.remainingEntries < 0){
-			throw new Error("There can't negative entries")
-		}
-		if(this.remainingEntries === 0){ // execute API calls Only after all user added functions are executed
-			apiFunc.call(this);
-			callback && callback.call(callback['this']);
+		if(predicate()){ // execute API calls Only after all user added functions are executed
+			const returnValue = apiFunc();
+			callback && callback(returnValue);
 		} else {
-			ticker = new Ticker(_executeLater, this, 2);
+			let ticker = new Ticker(_executeLater, null, 2);
+			errorCallback && ticker.onError(errorCallback);
 			ticker.executeInCycle()
 		}
 	};
 	_executeLater();
 };
 
-export function executeEntry(entry, index, disposedEntriesIndex, callLater = false){
-	if (entry.func) {
-		callLater && (this.remainingEntries = this.remainingEntries + 1);
-		entry.func.apply(entry.context || entry.func['this']);
-	} else {
-		disposedEntriesIndex.push(index);
-	}
-}
-
-export function executeEntries(callLater = false){
+/**
+ * Executes all the stored functions , if callLater enabled, executes them in frame cycle
+ *
+ * @param {array} entries of  which contains the function and its context.
+ * @param {boolean} indicates execution needs to happen in frame cycle
+ * @return {number} return count of entries that are added to execute in loop later
+ */
+export function executeEntries(entries, callLater = false){
 	const disposedEntriesIndex = [];
-	const _entries = callLater ? this.frameEntries : this.entries;
-	_entries.forEach(function(entry, index){
-		executeEntry.call(this, entry, index, disposedEntriesIndex, callLater)
-	}, this);
-	clearDisposedEntries(disposedEntriesIndex,_entries);
+	let delayedEntriesCount = 0;
+	entries.forEach(function(entry, index){
+		if (entry.func) {
+			callLater && (delayedEntriesCount = delayedEntriesCount + 1);
+			entry.func.apply(entry.context || entry.func['this']);
+		} else {
+			disposedEntriesIndex.push(index);
+		}
+	});
+	clearDisposedEntries(disposedEntriesIndex,entries);
+	return delayedEntriesCount;
 }
 
-export function clearDisposedEntries(indices, entries){
+function clearDisposedEntries(indices, entries){
 	if(typeof indices === 'number'){
 		entries.splice(indices,1);
 	} else {
 		indices.forEach(function(entryIndex){
 			entries.splice(entryIndex,1);
-		}, this)
+		})
 	}
-
 }
+
+function getEntry(list, index, isTicker){
+	if(isTicker){
+		const tickerEntry =  list[index];
+		return tickerEntry.context;
+	} else {
+		return list[index];
+	}
+}
+
+
+export function disposeAndRemoveEntry(func, context, list , isTicker){
+	for(let i = 0; i < list.length; i++){
+		let entry = getEntry(list,i,isTicker);
+		if(entry && entry.func && entry.func === func && entry.context === context){
+			list[i].dispose();
+			clearDisposedEntries(i, list);
+			return;
+		}
+	}
+};

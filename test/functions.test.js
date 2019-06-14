@@ -23,19 +23,19 @@ describe ('API', ()=>{
 	describe('addFunction', ()=>{
 		it('Should add function to entries array by default', ()=>{
 			functions.addFunction(func1);
-			expect(functions.entries.length).equal(1);
-			expect(functions.frameEntries.length).equal(0);
+			expect(functions._entries.length).equal(1);
+			expect(functions._tickerEntries.length).equal(0);
 			functions.addFunction(func2);
-			expect(functions.entries.length).equal(2);
-			expect(functions.frameEntries.length).equal(0);
+			expect(functions._entries.length).equal(2);
+			expect(functions._tickerEntries.length).equal(0);
 		});
-		it('Should add function to frameEntries array if executeLaterInNextTick is set to true', ()=>{
+		it('Should add function to tickerEntries array if executeInCycle is set to true', ()=>{
 			functions.addFunction(func3, null, true);
-			expect(functions.frameEntries.length).equal(1);
-			expect(functions.entries.length).equal(0);
+			expect(functions._tickerEntries.length).equal(1);
+			expect(functions._entries.length).equal(0);
 			functions.addFunction(func4,  null, true);
-			expect(functions.frameEntries.length).equal(2);
-			expect(functions.entries.length).equal(0);
+			expect(functions._tickerEntries.length).equal(2);
+			expect(functions._entries.length).equal(0);
 		});
 		it('should not execute the function', ()=>{
 			functions.addFunction(func1);
@@ -48,24 +48,24 @@ describe ('API', ()=>{
 			functions.addFunction(func3);
 			functions.addFunction(func4, null, true);
 			expect(functions.remainingEntries).equal(2);
-			expect(functions.frameEntries.length).equal(2);
-			expect(functions.entries.length).equal(0);
+			expect(functions._tickerEntries.length).equal(2);
+			expect(functions._entries.length).equal(0);
 			setTimeout(()=>{
 				expect(functions.remainingEntries).equal(0);
-				expect(functions.frameEntries.length).equal(3);
-				expect(functions.entries.length).equal(1);
+				expect(functions._tickerEntries.length).equal(3);
+				expect(functions._entries.length).equal(1);
 				done();
 			},0);
 		});
 		it('callback should be called after adding', (done)=>{
-			expect(functions.entries.length).equal(0);
+			expect(functions._entries.length).equal(0);
 			functions.addFunction(func1, null, false, 0 , ()=>{
-				expect(functions.entries.length).equal(1);
+				expect(functions._entries.length).equal(1);
 			});
 
-			expect(functions.frameEntries.length).equal(0);
+			expect(functions._tickerEntries.length).equal(0);
 			functions.addFunction(func2, null, true, 0 , ()=>{
-				expect(functions.frameEntries.length).equal(1);
+				expect(functions._tickerEntries.length).equal(1);
 				done();
 			});
 
@@ -74,19 +74,19 @@ describe ('API', ()=>{
 	describe('removeFunction', ()=>{
 		it('Should remove function to entries array by default', ()=>{
 			functions.addFunction(func1);
-			expect(functions.entries.length).equal(1);
+			expect(functions._entries.length).equal(1);
 			functions.addFunction(func2);
-			expect(functions.entries.length).equal(2);
+			expect(functions._entries.length).equal(2);
 			functions.removeFunction(func1);
-			expect(functions.entries.length).equal(1);
+			expect(functions._entries.length).equal(1);
 		});
-		it('Should add function to frameEntries array if executeLaterInNextTick is set to true', ()=>{
+		it('Should add function to tickerEntries array if executeLaterInNextTick is set to true', ()=>{
 			functions.addFunction(func3, null, true);
-			expect(functions.frameEntries.length).equal(1);
+			expect(functions._tickerEntries.length).equal(1);
 			functions.addFunction(func4,  null, true);
-			expect(functions.frameEntries.length).equal(2);
+			expect(functions._tickerEntries.length).equal(2);
 			functions.removeFunction(func3);
-			expect(functions.frameEntries.length).equal(1);
+			expect(functions._tickerEntries.length).equal(1);
 		});
 		it('if function execution in progress, should remove after completion', (done)=>{
 			functions.addFunction(func1, null, true);
@@ -94,23 +94,23 @@ describe ('API', ()=>{
 			functions.trigger();
 			functions.removeFunction(func1);
 			expect(functions.remainingEntries).equal(2);
-			expect(functions.frameEntries.length).equal(2);
+			expect(functions._tickerEntries.length).equal(2);
 			setTimeout(()=>{
 				expect(functions.remainingEntries).equal(0);
-				expect(functions.frameEntries.length).equal(1);
+				expect(functions._tickerEntries.length).equal(1);
 				done();
 			},0);
 		});
 		it('callback should be called after removing', (done)=>{
 			functions.addFunction(func1);
 			functions.addFunction(func2,null, true);
-			expect(functions.entries.length).equal(1);
-			expect(functions.frameEntries.length).equal(1);
+			expect(functions._entries.length).equal(1);
+			expect(functions._tickerEntries.length).equal(1);
 			functions.removeFunction(func1, null, ()=>{
-				expect(functions.entries.length).equal(0);
+				expect(functions._entries.length).equal(0);
 			})
 			functions.removeFunction(func2, null, ()=>{
-				expect(functions.frameEntries.length).equal(0);
+				expect(functions._tickerEntries.length).equal(0);
 				done()
 			})
 
@@ -122,6 +122,10 @@ describe ('API', ()=>{
 			functions.addFunction(func2);
 			functions.trigger();
 			expect(executionCount).equal(2);
+			executionCount = 0;
+			functions.removeFunction(func2);
+			functions.trigger();
+			expect(executionCount).equal(1);
 		});
 		it('Should execute callback after all functions are executed', (done)=>{
 			functions.addFunction(func1, null, true);

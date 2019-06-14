@@ -1,5 +1,7 @@
 import Ticker from '@statetree/ticker';
 
+/*
+* Wrapper for function to hold reference to the context*/
 export default class Entry {
     constructor(func, context = null){
         this.context = context;
