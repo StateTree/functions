@@ -3,10 +3,10 @@ import Ticker from "@statetree/ticker";
 /**
  * Based on return value of predicate, this function decides whether to execute the method immediately or in frame cycle
  *
- * @param {function} predicate.
+ * @param {function} predicate
  * @param {function} apiFunc
- * @param {function} callback, Api func execution may be sync or Async, if its sync we cant return notifier as user can register doneCallback after API invocation
- * @param {function} errorCallback.
+ * @param {function} callback Api func execution may be sync or Async, if its sync we cant return notifier as user can register doneCallback after API invocation
+ * @param {function} errorCallback
  * @return {void}
  */
 export function executeInSyncOrAsync(predicate, apiFunc, callback, errorCallback){
@@ -28,7 +28,7 @@ export function executeInSyncOrAsync(predicate, apiFunc, callback, errorCallback
  * Executes all the stored functions , if callLater enabled, executes them in frame cycle
  *
  * @param {array} entries of  which contains the function and its context.
- * @param {boolean} indicates execution needs to happen in frame cycle
+ * @param {boolean} callLater indicates execution needs to happen in frame cycle
  * @return {number} return count of entries that are added to execute in loop later
  */
 export function executeEntries(entries, callLater = false){

@@ -1,6 +1,6 @@
 {
   "name": "@statetree/functions",
-  "version": "6.0.0",
+  "version": "6.0.1",
   "description": "cluster of function that can be chained to create a pipeline ",
   "main": "index.js",
   "scripts": {
