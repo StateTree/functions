@@ -18,7 +18,7 @@ function frameFunctionSecond(){
 let executed = false
 function listenersDone(){
 	executed = true
-	console.log("All Function execu ted", functions.remainingEntries);
+	console.log("All Function executed", functions.remainingEntries);
 }
 
 
@@ -48,7 +48,9 @@ functions.setConnector(listenersDone);
 functions.trigger(()=>{
 	console.log('Trigger 1 callback');
 });
-functions.removeFunction(frameFunctionSecond);
+functions.removeFunction(frameFunctionSecond, null, ()=>{
+	console.log('Done Removing frame Func second');
+});
 functions.trigger(()=>{
 	console.log('Trigger 2 callback');
 });
