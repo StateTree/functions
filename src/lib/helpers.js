@@ -24,6 +24,20 @@ export function executeInSyncOrAsync(predicate, apiFunc, callback, errorCallback
 	_executeLater();
 };
 
+export function executeAsync(predicate, apiFunc){
+	// Important to create inside closure to execute in Ticker
+	const _executeLater = ()=>{
+		let ticker;
+		if(predicate()){ // execute API calls Only after all user added functions are executed
+			ticker = new Ticker(apiFunc, null, 2);
+		} else {
+			ticker = new Ticker(_executeLater, null, 2);
+		}
+		return ticker.executeInCycle()
+	};
+	return _executeLater();
+};
+
 /**
  * Executes all the stored functions , if callLater enabled, executes them in frame cycle
  *
