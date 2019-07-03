@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">lib/helpers.js | @statetree/functions</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="cluster of function that can be chained to create a pipeline "><meta property="twitter:card" content="summary"><meta property="twitter:title" content="@statetree/functions"><meta property="twitter:description" content="cluster of function that can be chained to create a pipeline "></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/StateTree/functions"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/entry.js~Entry.html">Entry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/functions.js~Functions.html">Functions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-disposeAndRemoveEntry">disposeAndRemoveEntry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-executeAsync">executeAsync</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-executeEntries">executeEntries</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-executeInSyncOrAsync">executeInSyncOrAsync</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">lib/helpers.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Ticker from &quot;@statetree/ticker&quot;;
+
+/**
+ * Based on return value of predicate, this function decides whether to execute the method immediately or in frame cycle
+ *
+ * @param {function} predicate
+ * @param {function} apiFunc
+ * @param {function} callback Api func execution may be sync or Async, if its sync we cant return notifier as user can register doneCallback after API invocation
+ * @param {function} errorCallback
+ * @return {void}
+ */
+export function executeInSyncOrAsync(predicate, apiFunc, callback, errorCallback){
+	// Important to create inside closure to execute in Ticker
+	const _executeLater = ()=&gt;{
+		if(predicate()){ // execute API calls Only after all user added functions are executed
+			const returnValue = apiFunc();
+			callback &amp;&amp; callback(returnValue);
+		} else {
+			let ticker = new Ticker(_executeLater, null, 2);
+			errorCallback &amp;&amp; ticker.onError(errorCallback);
+			ticker.executeInCycle()
+		}
+	};
+	_executeLater();
+};
+
+export function executeAsync(predicate, apiFunc){
+	// Important to create inside closure to execute in Ticker
+	const _executeLater = ()=&gt;{
+		let ticker;
+		if(predicate()){ // execute API calls Only after all user added functions are executed
+			ticker = new Ticker(apiFunc, null, 2);
+		} else {
+			ticker = new Ticker(_executeLater, null, 2);
+		}
+		return ticker.executeInCycle()
+	};
+	return _executeLater();
+};
+
+/**
+ * Executes all the stored functions , if callLater enabled, executes them in frame cycle
+ *
+ * @param {array} entries of  which contains the function and its context.
+ * @param {boolean} callLater indicates execution needs to happen in frame cycle
+ * @return {number} return count of entries that are added to execute in loop later
+ */
+export function executeEntries(entries, callLater = false){
+	const disposedEntriesIndex = [];
+	let delayedEntriesCount = 0;
+	entries.forEach(function(entry, index){
+		if (entry.func) {
+			callLater &amp;&amp; (delayedEntriesCount = delayedEntriesCount + 1);
+			entry.func.apply(entry.context || entry.func[&apos;this&apos;]);
+		} else {
+			disposedEntriesIndex.push(index);
+		}
+	});
+	clearDisposedEntries(disposedEntriesIndex,entries);
+	return delayedEntriesCount;
+}
+
+function clearDisposedEntries(indices, entries){
+	if(typeof indices === &apos;number&apos;){
+		entries.splice(indices,1);
+	} else {
+		indices.forEach(function(entryIndex){
+			entries.splice(entryIndex,1);
+		})
+	}
+}
+
+function getEntry(list, index, isTicker){
+	if(isTicker){
+		const tickerEntry =  list[index];
+		return tickerEntry.context;
+	} else {
+		return list[index];
+	}
+}
+
+
+export function disposeAndRemoveEntry(func, context, list , isTicker){
+	for(let i = 0; i &lt; list.length; i++){
+		let entry = getEntry(list,i,isTicker);
+		if(entry &amp;&amp; entry.func &amp;&amp; entry.func === func &amp;&amp; entry.context === context){
+			list[i].dispose();
+			clearDisposedEntries(i, list);
+			return;
+		}
+	}
+};</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

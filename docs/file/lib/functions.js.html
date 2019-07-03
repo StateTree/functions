@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">lib/functions.js | @statetree/functions</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="cluster of function that can be chained to create a pipeline "><meta property="twitter:card" content="summary"><meta property="twitter:title" content="@statetree/functions"><meta property="twitter:description" content="cluster of function that can be chained to create a pipeline "></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/StateTree/functions"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/entry.js~Entry.html">Entry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/functions.js~Functions.html">Functions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-disposeAndRemoveEntry">disposeAndRemoveEntry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-executeAsync">executeAsync</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-executeEntries">executeEntries</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-executeInSyncOrAsync">executeInSyncOrAsync</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">lib/functions.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Ticker from &apos;@statetree/ticker&apos;;
+import {executeInSyncOrAsync, executeEntries, disposeAndRemoveEntry,executeAsync} from &apos;./helpers&apos;;
+import Entry from &apos;./entry&apos;;
+
+function getTickerEntry(func, context, priority, errorCallback, funcsInst){
+	const ticker = new Ticker(func, context, priority);
+	function doneNotifier(){
+		funcsInst.remainingEntries = funcsInst.remainingEntries - 1;
+	};
+	ticker.onDone(doneNotifier).onError(errorCallback);
+	return new Entry(ticker.executeInCycle, ticker);
+}
+
+export default class Functions {
+
+	constructor(connector = null) {
+		this._entries = [];
+		this._tickerEntries = []; // ticker entries
+		this.remainingEntries = 0;
+		this.connector = connector; // connector is responsible for sequencing next function set
+		this._enableConnector = true;
+	}
+	/**
+	 * Based on return value of predicate, this function decides whether to execute the method immediately or in frame cycle
+	 *
+	 * @param {function} apiFunc
+	 * @param {function} callback Api func execution may be sync or Async, if its sync we cant return notifier as user can register doneCallback after API invocation
+	 * @param {function} errorCallback
+	 * @return {void}
+	 */
+	executeWhenIdle(apiFunc, callback, errorCallback){
+		const predicate = ()=&gt;{
+			if(this.remainingEntries &lt; 0){
+				throw new Error(&quot;There can&apos;t be negative entries&quot;)
+			}
+			return this.remainingEntries === 0;
+		};
+		if(!errorCallback){
+			errorCallback = (error)=&gt;console.log(error);
+		}
+		executeInSyncOrAsync(predicate, apiFunc, callback, errorCallback);
+	};
+
+	/**
+	 * Based on return value of predicate, this function decides whether to execute the method in immediate frame cycle or following cycle
+	 *
+	 * @param {function} apiFunc
+	 * @return {object} notifier
+	 */
+	executeAsyncWhenIdle(apiFunc){
+		const predicate = ()=&gt;{
+			if(this.remainingEntries &lt; 0){
+				throw new Error(&quot;There can&apos;t be negative entries&quot;)
+			}
+			return this.remainingEntries === 0;
+		};
+		return executeAsync(predicate, apiFunc)
+	}
+
+	/**
+	 * execute all the entries
+	 *
+	 * @param {function} callback
+	 * @return {void}
+	 */
+	trigger(callback = null){
+		const that = this;
+		const _trigger = ()=&gt;{
+			const {_entries, _tickerEntries} = that;
+			const shouldTrigger = that.shouldExecuteFunctions();
+			if(shouldTrigger){
+				that.functionsWillExecute();
+				(_entries.length &gt; 0) &amp;&amp; executeEntries(_entries);
+				if (_tickerEntries.length &gt; 0) {
+					that.remainingEntries = executeEntries( _tickerEntries, true)
+				};
+			}
+		};
+
+		const entriesExecutionCompletedNotifier = ()=&gt;{
+			if(that.remainingEntries === 0){
+				callback &amp;&amp; callback()
+				that.functionsDidExecute();
+			} else {
+				that.executeWhenIdle(entriesExecutionCompletedNotifier);
+			}
+		};
+
+		this.executeWhenIdle( _trigger, entriesExecutionCompletedNotifier);
+	};
+
+	/**
+	 * Add the function to entries
+	 * if trigger is in progress, adds once its completed
+	 *
+	 * @param {function} func
+	 * @param {object} context
+	 * @param {boolean} executeInCycle
+	 * @param {number} priority
+	 * @param {function} callback
+	 * @param {function} errorCallback
+	 * @return {void}
+	 */
+	addFunction(func, context = null, executeInCycle = false, priority = 0, callback = null, errorCallback = null){
+		const _addFunction = () =&gt; {
+			let entry = new Entry(func, context, priority);
+			if (executeInCycle){
+				entry = getTickerEntry(func, context, priority, errorCallback, this);
+				this._tickerEntries.push(entry);
+			} else {
+				entry = new Entry(func, context);
+				this._entries.push(entry);
+			}
+			callback &amp;&amp; callback(entry)
+		};
+		this.executeWhenIdle(_addFunction);
+	};
+
+	/**
+	 * remove the function from entries
+	 * if trigger is in progress, removes once its completed
+	 *
+	 * @param {function} func
+	 * @param {object} context
+	 * @param {function} callback
+	 * @return {void}
+	 */
+	removeFunction(func, context = null, callback = null){
+		const _removeFunction = ()=&gt; {
+			const {_tickerEntries, _entries} = this;
+			disposeAndRemoveEntry(func,context,_entries);
+			disposeAndRemoveEntry(func,context,_tickerEntries , true);
+			callback &amp;&amp; callback();
+		}
+
+		this.executeWhenIdle(_removeFunction);
+	};
+
+	/**
+	 * Should be implemented by the class which inherits it,
+	 * will be called before executing entries
+	 */
+	functionsWillExecute(){
+
+	};
+
+	/**
+	 * Should be implemented by the class which inherits it,
+	 * Should be a predicate function which decides whether to execute the entries.
+	 * @return {boolean}
+	 */
+	shouldExecuteFunctions(){
+		return true;
+	};
+
+	/**
+	 * Should be extended by calling super.functionsDidExecute() by the class which inherits it,
+	 * If connector is enabled , this will trigger the function that was referenced to connector
+	 */
+	functionsDidExecute(){
+		this._enableConnector &amp;&amp; this.connector &amp;&amp; this.connector();
+	};
+
+	/**
+	 * sets the connector function which is the binder for next sequence of actions
+	 * if trigger is in progress, sets once its completed
+	 *
+	 * @param {function} connector
+	 * @return {void}
+	 */
+	setConnector(connector){
+		const _setConnector = () =&gt; {
+			this.connector = connector;
+		}
+		this.executeWhenIdle(_setConnector);
+
+	}
+
+	/**
+	 * removes the connector function which is the binder for next sequence of actions
+	 * if trigger is in progress, removes once its completed
+	 *
+	 * @return {void}
+	 */
+	removeConnector(){
+		const _removeConnector = () =&gt; {
+			this.connector = null;
+		};
+		this.executeWhenIdle(_removeConnector);
+	}
+
+	/**
+	 * enables the connector function which is the binder for next sequence of actions
+	 * if trigger is in progress, enables once its completed
+	 *
+	 * @return {void}
+	 */
+	linkConnector(){
+		const _linkConnector = () =&gt; {
+			this._enableConnector = true;
+		};
+		this.executeWhenIdle(_linkConnector);
+	}
+
+	/**
+	 * disables the connector function which is the binder for next sequence of actions
+	 * if trigger is in progress, disables once its completed
+	 *
+	 * @return {void}
+	 */
+	unLinkConnector(){
+		const _unLinkConnector = () =&gt; {
+			this._enableConnector = false;
+		};
+		this.executeWhenIdle(_unLinkConnector);
+	}
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

@@ -1,0 +1,1961 @@
+[
+  {
+    "__docId__": 1,
+    "kind": "external",
+    "name": "Infinity",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Infinity",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 2,
+    "kind": "external",
+    "name": "NaN",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~NaN",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 3,
+    "kind": "external",
+    "name": "undefined",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~undefined",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 4,
+    "kind": "external",
+    "name": "null",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~null",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 5,
+    "kind": "external",
+    "name": "Object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 6,
+    "kind": "external",
+    "name": "object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 7,
+    "kind": "external",
+    "name": "Function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 8,
+    "kind": "external",
+    "name": "function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 9,
+    "kind": "external",
+    "name": "Boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 10,
+    "kind": "external",
+    "name": "boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 11,
+    "kind": "external",
+    "name": "Symbol",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Symbol",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 12,
+    "kind": "external",
+    "name": "Error",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Error",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 13,
+    "kind": "external",
+    "name": "EvalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~EvalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 14,
+    "kind": "external",
+    "name": "InternalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~InternalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 15,
+    "kind": "external",
+    "name": "RangeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~RangeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 16,
+    "kind": "external",
+    "name": "ReferenceError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~ReferenceError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 17,
+    "kind": "external",
+    "name": "SyntaxError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~SyntaxError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 18,
+    "kind": "external",
+    "name": "TypeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~TypeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 19,
+    "kind": "external",
+    "name": "URIError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~URIError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 20,
+    "kind": "external",
+    "name": "Number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 21,
+    "kind": "external",
+    "name": "number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 22,
+    "kind": "external",
+    "name": "Date",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Date",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 23,
+    "kind": "external",
+    "name": "String",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~String",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 24,
+    "kind": "external",
+    "name": "string",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~string",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 25,
+    "kind": "external",
+    "name": "RegExp",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~RegExp",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 26,
+    "kind": "external",
+    "name": "Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 27,
+    "kind": "external",
+    "name": "Int8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Int8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 28,
+    "kind": "external",
+    "name": "Uint8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Uint8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 29,
+    "kind": "external",
+    "name": "Uint8ClampedArray",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Uint8ClampedArray",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 30,
+    "kind": "external",
+    "name": "Int16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Int16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 31,
+    "kind": "external",
+    "name": "Uint16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Uint16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 32,
+    "kind": "external",
+    "name": "Int32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Int32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 33,
+    "kind": "external",
+    "name": "Uint32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Uint32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 34,
+    "kind": "external",
+    "name": "Float32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Float32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 35,
+    "kind": "external",
+    "name": "Float64Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Float64Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 36,
+    "kind": "external",
+    "name": "Map",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Map",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 37,
+    "kind": "external",
+    "name": "Set",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Set",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 38,
+    "kind": "external",
+    "name": "WeakMap",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~WeakMap",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 39,
+    "kind": "external",
+    "name": "WeakSet",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~WeakSet",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 40,
+    "kind": "external",
+    "name": "ArrayBuffer",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~ArrayBuffer",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 41,
+    "kind": "external",
+    "name": "DataView",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~DataView",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 42,
+    "kind": "external",
+    "name": "JSON",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~JSON",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 43,
+    "kind": "external",
+    "name": "Promise",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Promise",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 44,
+    "kind": "external",
+    "name": "Generator",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Generator",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 45,
+    "kind": "external",
+    "name": "GeneratorFunction",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~GeneratorFunction",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 46,
+    "kind": "external",
+    "name": "Reflect",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Reflect",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 47,
+    "kind": "external",
+    "name": "Proxy",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
+    "memberof": "lib/.external-ecmascript.js",
+    "static": true,
+    "longname": "lib/.external-ecmascript.js~Proxy",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 48,
+    "kind": "file",
+    "name": "lib/entry.js",
+    "content": "import Ticker from '@statetree/ticker';\n\n/*\n* Wrapper for function to hold reference to the context*/\nexport default class Entry {\n    constructor(func, context = null){\n        this.context = context;\n        this.func = func;\n    }\n}\n\n// Method available only on Entry instance not in Class\nEntry.prototype.dispose = function (){\n    if(this.context instanceof Ticker){\n        this.context.dispose();\n    }\n    this.context = null;\n    this.func = null;\n}",
+    "static": true,
+    "longname": "/home/travis/build/StateTree/functions/src/lib/entry.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 49,
+    "kind": "class",
+    "name": "Entry",
+    "memberof": "lib/entry.js",
+    "static": true,
+    "longname": "lib/entry.js~Entry",
+    "access": "public",
+    "export": true,
+    "importPath": "@statetree/functions/lib/entry.js",
+    "importStyle": "Entry",
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "interface": false
+  },
+  {
+    "__docId__": 50,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "lib/entry.js~Entry",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "lib/entry.js~Entry#constructor",
+    "access": "public",
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true
+  },
+  {
+    "__docId__": 51,
+    "kind": "member",
+    "name": "context",
+    "memberof": "lib/entry.js~Entry",
+    "static": false,
+    "longname": "lib/entry.js~Entry#context",
+    "access": "public",
+    "description": null,
+    "lineNumber": 7,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 52,
+    "kind": "member",
+    "name": "func",
+    "memberof": "lib/entry.js~Entry",
+    "static": false,
+    "longname": "lib/entry.js~Entry#func",
+    "access": "public",
+    "description": null,
+    "lineNumber": 8,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 53,
+    "kind": "function",
+    "name": "dispose",
+    "memberof": "lib/entry.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "lib/entry.js~dispose",
+    "access": "public",
+    "export": false,
+    "importPath": "@statetree/functions/lib/entry.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 13,
+    "undocument": true,
+    "params": [],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 54,
+    "kind": "file",
+    "name": "lib/functions.js",
+    "content": "import Ticker from '@statetree/ticker';\nimport {executeInSyncOrAsync, executeEntries, disposeAndRemoveEntry,executeAsync} from './helpers';\nimport Entry from './entry';\n\nfunction getTickerEntry(func, context, priority, errorCallback, funcsInst){\n\tconst ticker = new Ticker(func, context, priority);\n\tfunction doneNotifier(){\n\t\tfuncsInst.remainingEntries = funcsInst.remainingEntries - 1;\n\t};\n\tticker.onDone(doneNotifier).onError(errorCallback);\n\treturn new Entry(ticker.executeInCycle, ticker);\n}\n\nexport default class Functions {\n\n\tconstructor(connector = null) {\n\t\tthis._entries = [];\n\t\tthis._tickerEntries = []; // ticker entries\n\t\tthis.remainingEntries = 0;\n\t\tthis.connector = connector; // connector is responsible for sequencing next function set\n\t\tthis._enableConnector = true;\n\t}\n\t/**\n\t * Based on return value of predicate, this function decides whether to execute the method immediately or in frame cycle\n\t *\n\t * @param {function} apiFunc\n\t * @param {function} callback Api func execution may be sync or Async, if its sync we cant return notifier as user can register doneCallback after API invocation\n\t * @param {function} errorCallback\n\t * @return {void}\n\t */\n\texecuteWhenIdle(apiFunc, callback, errorCallback){\n\t\tconst predicate = ()=>{\n\t\t\tif(this.remainingEntries < 0){\n\t\t\t\tthrow new Error(\"There can't be negative entries\")\n\t\t\t}\n\t\t\treturn this.remainingEntries === 0;\n\t\t};\n\t\tif(!errorCallback){\n\t\t\terrorCallback = (error)=>console.log(error);\n\t\t}\n\t\texecuteInSyncOrAsync(predicate, apiFunc, callback, errorCallback);\n\t};\n\n\t/**\n\t * Based on return value of predicate, this function decides whether to execute the method in immediate frame cycle or following cycle\n\t *\n\t * @param {function} apiFunc\n\t * @return {object} notifier\n\t */\n\texecuteAsyncWhenIdle(apiFunc){\n\t\tconst predicate = ()=>{\n\t\t\tif(this.remainingEntries < 0){\n\t\t\t\tthrow new Error(\"There can't be negative entries\")\n\t\t\t}\n\t\t\treturn this.remainingEntries === 0;\n\t\t};\n\t\treturn executeAsync(predicate, apiFunc)\n\t}\n\n\t/**\n\t * execute all the entries\n\t *\n\t * @param {function} callback\n\t * @return {void}\n\t */\n\ttrigger(callback = null){\n\t\tconst that = this;\n\t\tconst _trigger = ()=>{\n\t\t\tconst {_entries, _tickerEntries} = that;\n\t\t\tconst shouldTrigger = that.shouldExecuteFunctions();\n\t\t\tif(shouldTrigger){\n\t\t\t\tthat.functionsWillExecute();\n\t\t\t\t(_entries.length > 0) && executeEntries(_entries);\n\t\t\t\tif (_tickerEntries.length > 0) {\n\t\t\t\t\tthat.remainingEntries = executeEntries( _tickerEntries, true)\n\t\t\t\t};\n\t\t\t}\n\t\t};\n\n\t\tconst entriesExecutionCompletedNotifier = ()=>{\n\t\t\tif(that.remainingEntries === 0){\n\t\t\t\tcallback && callback()\n\t\t\t\tthat.functionsDidExecute();\n\t\t\t} else {\n\t\t\t\tthat.executeWhenIdle(entriesExecutionCompletedNotifier);\n\t\t\t}\n\t\t};\n\n\t\tthis.executeWhenIdle( _trigger, entriesExecutionCompletedNotifier);\n\t};\n\n\t/**\n\t * Add the function to entries\n\t * if trigger is in progress, adds once its completed\n\t *\n\t * @param {function} func\n\t * @param {object} context\n\t * @param {boolean} executeInCycle\n\t * @param {number} priority\n\t * @param {function} callback\n\t * @param {function} errorCallback\n\t * @return {void}\n\t */\n\taddFunction(func, context = null, executeInCycle = false, priority = 0, callback = null, errorCallback = null){\n\t\tconst _addFunction = () => {\n\t\t\tlet entry = new Entry(func, context, priority);\n\t\t\tif (executeInCycle){\n\t\t\t\tentry = getTickerEntry(func, context, priority, errorCallback, this);\n\t\t\t\tthis._tickerEntries.push(entry);\n\t\t\t} else {\n\t\t\t\tentry = new Entry(func, context);\n\t\t\t\tthis._entries.push(entry);\n\t\t\t}\n\t\t\tcallback && callback(entry)\n\t\t};\n\t\tthis.executeWhenIdle(_addFunction);\n\t};\n\n\t/**\n\t * remove the function from entries\n\t * if trigger is in progress, removes once its completed\n\t *\n\t * @param {function} func\n\t * @param {object} context\n\t * @param {function} callback\n\t * @return {void}\n\t */\n\tremoveFunction(func, context = null, callback = null){\n\t\tconst _removeFunction = ()=> {\n\t\t\tconst {_tickerEntries, _entries} = this;\n\t\t\tdisposeAndRemoveEntry(func,context,_entries);\n\t\t\tdisposeAndRemoveEntry(func,context,_tickerEntries , true);\n\t\t\tcallback && callback();\n\t\t}\n\n\t\tthis.executeWhenIdle(_removeFunction);\n\t};\n\n\t/**\n\t * Should be implemented by the class which inherits it,\n\t * will be called before executing entries\n\t */\n\tfunctionsWillExecute(){\n\n\t};\n\n\t/**\n\t * Should be implemented by the class which inherits it,\n\t * Should be a predicate function which decides whether to execute the entries.\n\t * @return {boolean}\n\t */\n\tshouldExecuteFunctions(){\n\t\treturn true;\n\t};\n\n\t/**\n\t * Should be extended by calling super.functionsDidExecute() by the class which inherits it,\n\t * If connector is enabled , this will trigger the function that was referenced to connector\n\t */\n\tfunctionsDidExecute(){\n\t\tthis._enableConnector && this.connector && this.connector();\n\t};\n\n\t/**\n\t * sets the connector function which is the binder for next sequence of actions\n\t * if trigger is in progress, sets once its completed\n\t *\n\t * @param {function} connector\n\t * @return {void}\n\t */\n\tsetConnector(connector){\n\t\tconst _setConnector = () => {\n\t\t\tthis.connector = connector;\n\t\t}\n\t\tthis.executeWhenIdle(_setConnector);\n\n\t}\n\n\t/**\n\t * removes the connector function which is the binder for next sequence of actions\n\t * if trigger is in progress, removes once its completed\n\t *\n\t * @return {void}\n\t */\n\tremoveConnector(){\n\t\tconst _removeConnector = () => {\n\t\t\tthis.connector = null;\n\t\t};\n\t\tthis.executeWhenIdle(_removeConnector);\n\t}\n\n\t/**\n\t * enables the connector function which is the binder for next sequence of actions\n\t * if trigger is in progress, enables once its completed\n\t *\n\t * @return {void}\n\t */\n\tlinkConnector(){\n\t\tconst _linkConnector = () => {\n\t\t\tthis._enableConnector = true;\n\t\t};\n\t\tthis.executeWhenIdle(_linkConnector);\n\t}\n\n\t/**\n\t * disables the connector function which is the binder for next sequence of actions\n\t * if trigger is in progress, disables once its completed\n\t *\n\t * @return {void}\n\t */\n\tunLinkConnector(){\n\t\tconst _unLinkConnector = () => {\n\t\t\tthis._enableConnector = false;\n\t\t};\n\t\tthis.executeWhenIdle(_unLinkConnector);\n\t}\n}\n",
+    "static": true,
+    "longname": "/home/travis/build/StateTree/functions/src/lib/functions.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 55,
+    "kind": "function",
+    "name": "getTickerEntry",
+    "memberof": "lib/functions.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "lib/functions.js~getTickerEntry",
+    "access": "public",
+    "export": false,
+    "importPath": "@statetree/functions/lib/functions.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "params": [
+      {
+        "name": "func",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "context",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "priority",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "errorCallback",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "funcsInst",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 56,
+    "kind": "class",
+    "name": "Functions",
+    "memberof": "lib/functions.js",
+    "static": true,
+    "longname": "lib/functions.js~Functions",
+    "access": "public",
+    "export": true,
+    "importPath": "@statetree/functions/lib/functions.js",
+    "importStyle": "Functions",
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "interface": false
+  },
+  {
+    "__docId__": 57,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "lib/functions.js~Functions",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "lib/functions.js~Functions#constructor",
+    "access": "public",
+    "description": null,
+    "lineNumber": 16,
+    "undocument": true
+  },
+  {
+    "__docId__": 58,
+    "kind": "member",
+    "name": "_entries",
+    "memberof": "lib/functions.js~Functions",
+    "static": false,
+    "longname": "lib/functions.js~Functions#_entries",
+    "access": "private",
+    "description": null,
+    "lineNumber": 17,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*[]"
+      ]
+    }
+  },
+  {
+    "__docId__": 59,
+    "kind": "member",
+    "name": "_tickerEntries",
+    "memberof": "lib/functions.js~Functions",
+    "static": false,
+    "longname": "lib/functions.js~Functions#_tickerEntries",
+    "access": "private",
+    "description": null,
+    "lineNumber": 18,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*[]"
+      ]
+    }
+  },
+  {
+    "__docId__": 60,
+    "kind": "member",
+    "name": "remainingEntries",
+    "memberof": "lib/functions.js~Functions",
+    "static": false,
+    "longname": "lib/functions.js~Functions#remainingEntries",
+    "access": "public",
+    "description": null,
+    "lineNumber": 19,
+    "undocument": true,
+    "type": {
+      "types": [
+        "number"
+      ]
+    }
+  },
+  {
+    "__docId__": 61,
+    "kind": "member",
+    "name": "connector",
+    "memberof": "lib/functions.js~Functions",
+    "static": false,
+    "longname": "lib/functions.js~Functions#connector",
+    "access": "public",
+    "description": null,
+    "lineNumber": 20,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 62,
+    "kind": "member",
+    "name": "_enableConnector",
+    "memberof": "lib/functions.js~Functions",
+    "static": false,
+    "longname": "lib/functions.js~Functions#_enableConnector",
+    "access": "private",
+    "description": null,
+    "lineNumber": 21,
+    "undocument": true,
+    "type": {
+      "types": [
+        "boolean"
+      ]
+    }
+  },
+  {
+    "__docId__": 63,
+    "kind": "method",
+    "name": "executeWhenIdle",
+    "memberof": "lib/functions.js~Functions",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "lib/functions.js~Functions#executeWhenIdle",
+    "access": "public",
+    "description": "Based on return value of predicate, this function decides whether to execute the method immediately or in frame cycle",
+    "lineNumber": 31,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "function"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "apiFunc",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "function"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "callback",
+        "description": "Api func execution may be sync or Async, if its sync we cant return notifier as user can register doneCallback after API invocation"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "function"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "errorCallback",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "void"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 64,
+    "kind": "method",
+    "name": "executeAsyncWhenIdle",
+    "memberof": "lib/functions.js~Functions",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "lib/functions.js~Functions#executeAsyncWhenIdle",
+    "access": "public",
+    "description": "Based on return value of predicate, this function decides whether to execute the method in immediate frame cycle or following cycle",
+    "lineNumber": 50,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "function"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "apiFunc",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "object"
+      ],
+      "spread": false,
+      "description": "notifier"
+    }
+  },
+  {
+    "__docId__": 65,
+    "kind": "method",
+    "name": "trigger",
+    "memberof": "lib/functions.js~Functions",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "lib/functions.js~Functions#trigger",
+    "access": "public",
+    "description": "execute all the entries",
+    "lineNumber": 66,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "function"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "callback",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "void"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 66,
+    "kind": "method",
+    "name": "addFunction",
+    "memberof": "lib/functions.js~Functions",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "lib/functions.js~Functions#addFunction",
+    "access": "public",
+    "description": "Add the function to entries\nif trigger is in progress, adds once its completed",
+    "lineNumber": 104,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "function"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "func",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "context",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "executeInCycle",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "priority",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "function"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "callback",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "function"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "errorCallback",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "void"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 67,
+    "kind": "method",
+    "name": "removeFunction",
+    "memberof": "lib/functions.js~Functions",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "lib/functions.js~Functions#removeFunction",
+    "access": "public",
+    "description": "remove the function from entries\nif trigger is in progress, removes once its completed",
+    "lineNumber": 128,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "function"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "func",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "context",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "function"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "callback",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "void"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 68,
+    "kind": "method",
+    "name": "functionsWillExecute",
+    "memberof": "lib/functions.js~Functions",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "lib/functions.js~Functions#functionsWillExecute",
+    "access": "public",
+    "description": "Should be implemented by the class which inherits it,\nwill be called before executing entries",
+    "lineNumber": 143,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 69,
+    "kind": "method",
+    "name": "shouldExecuteFunctions",
+    "memberof": "lib/functions.js~Functions",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "lib/functions.js~Functions#shouldExecuteFunctions",
+    "access": "public",
+    "description": "Should be implemented by the class which inherits it,\nShould be a predicate function which decides whether to execute the entries.",
+    "lineNumber": 152,
+    "return": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "params": []
+  },
+  {
+    "__docId__": 70,
+    "kind": "method",
+    "name": "functionsDidExecute",
+    "memberof": "lib/functions.js~Functions",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "lib/functions.js~Functions#functionsDidExecute",
+    "access": "public",
+    "description": "Should be extended by calling super.functionsDidExecute() by the class which inherits it,\nIf connector is enabled , this will trigger the function that was referenced to connector",
+    "lineNumber": 160,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 71,
+    "kind": "method",
+    "name": "setConnector",
+    "memberof": "lib/functions.js~Functions",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "lib/functions.js~Functions#setConnector",
+    "access": "public",
+    "description": "sets the connector function which is the binder for next sequence of actions\nif trigger is in progress, sets once its completed",
+    "lineNumber": 171,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "function"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "connector",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "void"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 73,
+    "kind": "method",
+    "name": "removeConnector",
+    "memberof": "lib/functions.js~Functions",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "lib/functions.js~Functions#removeConnector",
+    "access": "public",
+    "description": "removes the connector function which is the binder for next sequence of actions\nif trigger is in progress, removes once its completed",
+    "lineNumber": 185,
+    "return": {
+      "nullable": null,
+      "types": [
+        "void"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "params": []
+  },
+  {
+    "__docId__": 75,
+    "kind": "method",
+    "name": "linkConnector",
+    "memberof": "lib/functions.js~Functions",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "lib/functions.js~Functions#linkConnector",
+    "access": "public",
+    "description": "enables the connector function which is the binder for next sequence of actions\nif trigger is in progress, enables once its completed",
+    "lineNumber": 198,
+    "return": {
+      "nullable": null,
+      "types": [
+        "void"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "params": []
+  },
+  {
+    "__docId__": 77,
+    "kind": "method",
+    "name": "unLinkConnector",
+    "memberof": "lib/functions.js~Functions",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "lib/functions.js~Functions#unLinkConnector",
+    "access": "public",
+    "description": "disables the connector function which is the binder for next sequence of actions\nif trigger is in progress, disables once its completed",
+    "lineNumber": 211,
+    "return": {
+      "nullable": null,
+      "types": [
+        "void"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "params": []
+  },
+  {
+    "__docId__": 79,
+    "kind": "file",
+    "name": "lib/helpers.js",
+    "content": "import Ticker from \"@statetree/ticker\";\n\n/**\n * Based on return value of predicate, this function decides whether to execute the method immediately or in frame cycle\n *\n * @param {function} predicate\n * @param {function} apiFunc\n * @param {function} callback Api func execution may be sync or Async, if its sync we cant return notifier as user can register doneCallback after API invocation\n * @param {function} errorCallback\n * @return {void}\n */\nexport function executeInSyncOrAsync(predicate, apiFunc, callback, errorCallback){\n\t// Important to create inside closure to execute in Ticker\n\tconst _executeLater = ()=>{\n\t\tif(predicate()){ // execute API calls Only after all user added functions are executed\n\t\t\tconst returnValue = apiFunc();\n\t\t\tcallback && callback(returnValue);\n\t\t} else {\n\t\t\tlet ticker = new Ticker(_executeLater, null, 2);\n\t\t\terrorCallback && ticker.onError(errorCallback);\n\t\t\tticker.executeInCycle()\n\t\t}\n\t};\n\t_executeLater();\n};\n\nexport function executeAsync(predicate, apiFunc){\n\t// Important to create inside closure to execute in Ticker\n\tconst _executeLater = ()=>{\n\t\tlet ticker;\n\t\tif(predicate()){ // execute API calls Only after all user added functions are executed\n\t\t\tticker = new Ticker(apiFunc, null, 2);\n\t\t} else {\n\t\t\tticker = new Ticker(_executeLater, null, 2);\n\t\t}\n\t\treturn ticker.executeInCycle()\n\t};\n\treturn _executeLater();\n};\n\n/**\n * Executes all the stored functions , if callLater enabled, executes them in frame cycle\n *\n * @param {array} entries of  which contains the function and its context.\n * @param {boolean} callLater indicates execution needs to happen in frame cycle\n * @return {number} return count of entries that are added to execute in loop later\n */\nexport function executeEntries(entries, callLater = false){\n\tconst disposedEntriesIndex = [];\n\tlet delayedEntriesCount = 0;\n\tentries.forEach(function(entry, index){\n\t\tif (entry.func) {\n\t\t\tcallLater && (delayedEntriesCount = delayedEntriesCount + 1);\n\t\t\tentry.func.apply(entry.context || entry.func['this']);\n\t\t} else {\n\t\t\tdisposedEntriesIndex.push(index);\n\t\t}\n\t});\n\tclearDisposedEntries(disposedEntriesIndex,entries);\n\treturn delayedEntriesCount;\n}\n\nfunction clearDisposedEntries(indices, entries){\n\tif(typeof indices === 'number'){\n\t\tentries.splice(indices,1);\n\t} else {\n\t\tindices.forEach(function(entryIndex){\n\t\t\tentries.splice(entryIndex,1);\n\t\t})\n\t}\n}\n\nfunction getEntry(list, index, isTicker){\n\tif(isTicker){\n\t\tconst tickerEntry =  list[index];\n\t\treturn tickerEntry.context;\n\t} else {\n\t\treturn list[index];\n\t}\n}\n\n\nexport function disposeAndRemoveEntry(func, context, list , isTicker){\n\tfor(let i = 0; i < list.length; i++){\n\t\tlet entry = getEntry(list,i,isTicker);\n\t\tif(entry && entry.func && entry.func === func && entry.context === context){\n\t\t\tlist[i].dispose();\n\t\t\tclearDisposedEntries(i, list);\n\t\t\treturn;\n\t\t}\n\t}\n};",
+    "static": true,
+    "longname": "/home/travis/build/StateTree/functions/src/lib/helpers.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 80,
+    "kind": "function",
+    "name": "executeInSyncOrAsync",
+    "memberof": "lib/helpers.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "lib/helpers.js~executeInSyncOrAsync",
+    "access": "public",
+    "export": true,
+    "importPath": "@statetree/functions/lib/helpers.js",
+    "importStyle": "{executeInSyncOrAsync}",
+    "description": "Based on return value of predicate, this function decides whether to execute the method immediately or in frame cycle",
+    "lineNumber": 12,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "function"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "predicate",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "function"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "apiFunc",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "function"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "callback",
+        "description": "Api func execution may be sync or Async, if its sync we cant return notifier as user can register doneCallback after API invocation"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "function"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "errorCallback",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "void"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 81,
+    "kind": "function",
+    "name": "executeAsync",
+    "memberof": "lib/helpers.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "lib/helpers.js~executeAsync",
+    "access": "public",
+    "export": true,
+    "importPath": "@statetree/functions/lib/helpers.js",
+    "importStyle": "{executeAsync}",
+    "description": null,
+    "lineNumber": 27,
+    "undocument": true,
+    "params": [
+      {
+        "name": "predicate",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "apiFunc",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 82,
+    "kind": "function",
+    "name": "executeEntries",
+    "memberof": "lib/helpers.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "lib/helpers.js~executeEntries",
+    "access": "public",
+    "export": true,
+    "importPath": "@statetree/functions/lib/helpers.js",
+    "importStyle": "{executeEntries}",
+    "description": "Executes all the stored functions , if callLater enabled, executes them in frame cycle",
+    "lineNumber": 48,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "entries",
+        "description": "of  which contains the function and its context."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "callLater",
+        "description": "indicates execution needs to happen in frame cycle"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "number"
+      ],
+      "spread": false,
+      "description": "return count of entries that are added to execute in loop later"
+    }
+  },
+  {
+    "__docId__": 83,
+    "kind": "function",
+    "name": "clearDisposedEntries",
+    "memberof": "lib/helpers.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "lib/helpers.js~clearDisposedEntries",
+    "access": "public",
+    "export": false,
+    "importPath": "@statetree/functions/lib/helpers.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 63,
+    "undocument": true,
+    "params": [
+      {
+        "name": "indices",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "entries",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 84,
+    "kind": "function",
+    "name": "getEntry",
+    "memberof": "lib/helpers.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "lib/helpers.js~getEntry",
+    "access": "public",
+    "export": false,
+    "importPath": "@statetree/functions/lib/helpers.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 73,
+    "undocument": true,
+    "params": [
+      {
+        "name": "list",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "index",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "isTicker",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 85,
+    "kind": "function",
+    "name": "disposeAndRemoveEntry",
+    "memberof": "lib/helpers.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "lib/helpers.js~disposeAndRemoveEntry",
+    "access": "public",
+    "export": true,
+    "importPath": "@statetree/functions/lib/helpers.js",
+    "importStyle": "{disposeAndRemoveEntry}",
+    "description": null,
+    "lineNumber": 83,
+    "undocument": true,
+    "params": [
+      {
+        "name": "func",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "context",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "list",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "isTicker",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 86,
+    "kind": "file",
+    "name": "lib/index.js",
+    "content": "import Functions from './functions';\nimport {executeInSyncOrAsync, executeAsync} from './helpers';\n\nexport {\n\tFunctions as default,\n\texecuteInSyncOrAsync,\n\texecuteAsync\n}",
+    "static": true,
+    "longname": "/home/travis/build/StateTree/functions/src/lib/index.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "kind": "index",
+    "content": "# Functions\n[![NPM version](https://img.shields.io/npm/v/@statetree/functions.svg?style=flat-square)](https://www.npmjs.com/package/@statetree/functions)\n[![Build Status](https://travis-ci.com/StateTree/functions.svg?branch=master)](https://travis-ci.com/StateTree/functions)\n[![Code Coverage](https://codecov.io/gh/StateTree/functions/branch/master/graph/badge.svg)](https://codecov.io/gh/StateTree/functions/branch/master/graph/badge.svg)\n\n## Download\n\n### npm\n```\nnpm install --save @statetree/functions\n```\n\n[Docs](https://statetree.github.io/functions/docs/)\n\n# What?\n* Collection of functions which are executed in the order they are added\n* An Object that helps us to add and remove function to functions collection\n* Provides a connector to co-oridante each collection set\n\n# Why?\n* We need to execute few task based on some condition and task after that based on another logic, this Library will facilitate that\n* for example, i want to execute all the functions that collect data from various sources followed by data cleaning task functions..\n\n\n",
+    "longname": "/home/travis/build/StateTree/functions/README.md",
+    "name": "./README.md",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "packageJSON",
+    "content": "{\n  \"name\": \"@statetree/functions\",\n  \"version\": \"6.1.0\",\n  \"description\": \"cluster of function that can be chained to create a pipeline \",\n  \"main\": \"index.js\",\n  \"scripts\": {\n    \"start\": \"webpack-dev-server --open --mode development\",\n    \"lint\": \"eslint ./src --ext .js --cache --fix --ext .jsx --cache --fix\",\n    \"test\": \"./node_modules/.bin/mocha test/**/*test.js --timeout 0 --require ./node_modules/@babel/register --require test/helpers/*.js -R spec\",\n    \"coverage\": \"NODE_ENV=coverage ./node_modules/.bin/nyc npm run test\",\n    \"report-coverage\": \"nyc report --reporter=lcov > coverage.lcov && codecov\",\n    \"doc\": \"./node_modules/.bin/esdoc open ./docs/index.html\",\n    \"prebuild\": \"rimraf lib && rimraf build\",\n    \"build\": \"./node_modules/.bin/webpack --mode production \",\n    \"postbuild\": \"node scripts/postbuild.js\",\n    \"release:master\": \"git checkout master && git merge --squash --strategy-option theirs develop && git commit -am 'Release Commit' && git push && git checkout develop\",\n    \"release:bugfix\": \"npm version patch -m 'Bumped patch version number' && npm run release:master\",\n    \"release:feature\": \"npm version minor -m 'Bumped minor version number' && npm run release:master\",\n    \"release:breakingchange\": \"npm version major -m 'Bumped major version number' && npm run release:master\",\n    \"postversion\": \"git push origin HEAD --follow-tags\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/StateTree/functions.git\"\n  },\n  \"author\": \"Sanjay Krishna Anbalagan\",\n  \"license\": \"MIT\",\n  \"bugs\": {\n    \"url\": \"https://github.com/StateTree/functions/issues\"\n  },\n  \"homepage\": \"https://statetree.github.io/functions/docs/\",\n  \"devDependencies\": {\n    \"@babel/cli\": \"^7.4.4\",\n    \"@babel/core\": \"^7.4.5\",\n    \"@babel/preset-env\": \"^7.4.5\",\n    \"@babel/register\": \"^7.0.0\",\n    \"babel-eslint\": \"^10.0.1\",\n    \"babel-loader\": \"^8.0.4\",\n    \"babel-plugin-istanbul\": \"^5.0.1\",\n    \"chai\": \"^4.2.0\",\n    \"co-exec\": \"^1.1.0\",\n    \"codecov\": \"^3.5.0\",\n    \"esdoc\": \"^1.1.0\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"eslint\": \"^5.6.1\",\n    \"eslint-loader\": \"^2.1.1\",\n    \"fs-extra\": \"^7.0.0\",\n    \"ghooks\": \"^2.0.4\",\n    \"jsdom\": \"^12.2.0\",\n    \"mocha\": \"^5.2.0\",\n    \"nyc\": \"^14.1.1\",\n    \"rimraf\": \"^2.6.2\",\n    \"sinon\": \"^7.3.2\",\n    \"webpack\": \"^4.32.2\",\n    \"webpack-cli\": \"^3.3.2\",\n    \"webpack-dev-server\": \"^3.4.1\"\n  },\n  \"files\": [\n    \"index.js\",\n    \"README.md\",\n    \"LICENSE\"\n  ],\n  \"config\": {\n    \"ghooks\": {\n      \"pre-commit\": \"npm run test\"\n    }\n  },\n  \"publishConfig\": {\n    \"access\": \"public\"\n  },\n  \"dependencies\": {\n    \"@statetree/ticker\": \"^3.4.1\"\n  }\n}\n",
+    "longname": "/home/travis/build/StateTree/functions/package.json",
+    "name": "package.json",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "manualIndex",
+    "content": "# Functions",
+    "longname": "/home/travis/build/StateTree/functions/build/manual/index.md",
+    "name": "./build/manual/index.md",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "manual",
+    "longname": "/home/travis/build/StateTree/functions/build/manual/installation.md",
+    "name": "./build/manual/installation.md",
+    "content": "# Download\n\n### npm\n```\nnpm install --save @statetree/functions\n```",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "manual",
+    "longname": "/home/travis/build/StateTree/functions/build/manual/overview.md",
+    "name": "./build/manual/overview.md",
+    "content": "# What?\n* Collection of functions which are executed in the order they are added\n* An Object that helps us to add and remove function to functions collection\n* Provides a connector to co-oridante each collection set\n\n# Why?\n* We need to execute few task based on some condition and task after that based on another logic, this Library will facilitate that\n* for example, i want to execute all the functions that collect data from various sources followed by data cleaning task functions..\n",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "manual",
+    "longname": "/home/travis/build/StateTree/functions/build/manual/tutorial.md",
+    "name": "./build/manual/tutorial.md",
+    "content": "# How?\n\n## API\n### addFunction\n\n```\nimport Functions from '@statetree/Functions';\n```\n\n### removeFunction\n\n```\nimport Functions from '@statetree/Functions';\n\n\n```\n### trigger\n```\nimport Functions from '@statetree/Functions';\n\n```\n\n### linkConnector\n```\nimport Functions from '@statetree/Functions';\n```\n\n### unLinkConnector\n\n```\nimport Functions from '@statetree/Functions';\n```\n\n### setConnector\n```\nimport Functions from '@statetree/Functions';\n```\n\n### removeConnector\n\n```\nimport Functions from '@statetree/Functions';\n```",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "__docId__": 87,
+    "kind": "testFile",
+    "name": "test/functions.test.js",
+    "content": "import {expect} from 'chai';\nimport Functions from './../src/lib/functions'\n\nlet functions, func1, func2, func3, func4, connector;\nlet executionCount = 0;\nlet connectorExecuted = 0;\ndescribe ('API', ()=>{\n\tbeforeEach(()=>{\n\t\tfunc1 = function(){executionCount++};\n\t\tfunc2 = function(){executionCount++};\n\t\tfunc3 = function(){executionCount++};\n\t\tfunc4 = function(){executionCount++};\n\t\tconnector = function(){ connectorExecuted = 1;};\n\t\tfunctions = new Functions(connector);\n\t});\n\n\tafterEach(()=>{\n\t\tfunctions = null;\n\t\texecutionCount = 0;\n\t\tconnectorExecuted = 0;\n\t});\n\n\tdescribe('addFunction', ()=>{\n\t\tit('Should add function to entries array by default', ()=>{\n\t\t\tfunctions.addFunction(func1);\n\t\t\texpect(functions._entries.length).equal(1);\n\t\t\texpect(functions._tickerEntries.length).equal(0);\n\t\t\tfunctions.addFunction(func2);\n\t\t\texpect(functions._entries.length).equal(2);\n\t\t\texpect(functions._tickerEntries.length).equal(0);\n\t\t});\n\t\tit('Should add function to tickerEntries array if executeInCycle is set to true', ()=>{\n\t\t\tfunctions.addFunction(func3, null, true);\n\t\t\texpect(functions._tickerEntries.length).equal(1);\n\t\t\texpect(functions._entries.length).equal(0);\n\t\t\tfunctions.addFunction(func4,  null, true);\n\t\t\texpect(functions._tickerEntries.length).equal(2);\n\t\t\texpect(functions._entries.length).equal(0);\n\t\t});\n\t\tit('should not execute the function', ()=>{\n\t\t\tfunctions.addFunction(func1);\n\t\t\texpect(executionCount).equal(0);\n\t\t});\n\t\tit('if function execution in progress, should add after completion', (done)=>{\n\t\t\tfunctions.addFunction(func1, null, true);\n\t\t\tfunctions.addFunction(func2, null, true);\n\t\t\tfunctions.trigger();\n\t\t\tfunctions.addFunction(func3);\n\t\t\tfunctions.addFunction(func4, null, true);\n\t\t\texpect(functions.remainingEntries).equal(2);\n\t\t\texpect(functions._tickerEntries.length).equal(2);\n\t\t\texpect(functions._entries.length).equal(0);\n\t\t\tsetTimeout(()=>{\n\t\t\t\texpect(functions.remainingEntries).equal(0);\n\t\t\t\texpect(functions._tickerEntries.length).equal(3);\n\t\t\t\texpect(functions._entries.length).equal(1);\n\t\t\t\tdone();\n\t\t\t},0);\n\t\t});\n\t\tit('callback should be called after adding', (done)=>{\n\t\t\texpect(functions._entries.length).equal(0);\n\t\t\tfunctions.addFunction(func1, null, false, 0 , ()=>{\n\t\t\t\texpect(functions._entries.length).equal(1);\n\t\t\t});\n\n\t\t\texpect(functions._tickerEntries.length).equal(0);\n\t\t\tfunctions.addFunction(func2, null, true, 0 , ()=>{\n\t\t\t\texpect(functions._tickerEntries.length).equal(1);\n\t\t\t\tdone();\n\t\t\t});\n\n\t\t});\n\t})\n\tdescribe('removeFunction', ()=>{\n\t\tit('Should remove function to entries array by default', ()=>{\n\t\t\tfunctions.addFunction(func1);\n\t\t\texpect(functions._entries.length).equal(1);\n\t\t\tfunctions.addFunction(func2);\n\t\t\texpect(functions._entries.length).equal(2);\n\t\t\tfunctions.removeFunction(func1);\n\t\t\texpect(functions._entries.length).equal(1);\n\t\t});\n\t\tit('Should add function to tickerEntries array if executeLaterInNextTick is set to true', ()=>{\n\t\t\tfunctions.addFunction(func3, null, true);\n\t\t\texpect(functions._tickerEntries.length).equal(1);\n\t\t\tfunctions.addFunction(func4,  null, true);\n\t\t\texpect(functions._tickerEntries.length).equal(2);\n\t\t\tfunctions.removeFunction(func3);\n\t\t\texpect(functions._tickerEntries.length).equal(1);\n\t\t});\n\t\tit('if function execution in progress, should remove after completion', (done)=>{\n\t\t\tfunctions.addFunction(func1, null, true);\n\t\t\tfunctions.addFunction(func2, null, true);\n\t\t\tfunctions.trigger();\n\t\t\tfunctions.removeFunction(func1);\n\t\t\texpect(functions.remainingEntries).equal(2);\n\t\t\texpect(functions._tickerEntries.length).equal(2);\n\t\t\tsetTimeout(()=>{\n\t\t\t\texpect(functions.remainingEntries).equal(0);\n\t\t\t\texpect(functions._tickerEntries.length).equal(1);\n\t\t\t\tdone();\n\t\t\t},0);\n\t\t});\n\t\tit('callback should be called after removing', (done)=>{\n\t\t\tfunctions.addFunction(func1);\n\t\t\tfunctions.addFunction(func2,null, true);\n\t\t\texpect(functions._entries.length).equal(1);\n\t\t\texpect(functions._tickerEntries.length).equal(1);\n\t\t\tfunctions.removeFunction(func1, null, ()=>{\n\t\t\t\texpect(functions._entries.length).equal(0);\n\t\t\t})\n\t\t\tfunctions.removeFunction(func2, null, ()=>{\n\t\t\t\texpect(functions._tickerEntries.length).equal(0);\n\t\t\t\tdone()\n\t\t\t})\n\n\t\t});\n\t})\n\tdescribe('trigger', ()=>{\n\t\tit('Should execute all added functions ', ()=>{\n\t\t\tfunctions.addFunction(func1);\n\t\t\tfunctions.addFunction(func2);\n\t\t\tfunctions.trigger();\n\t\t\texpect(executionCount).equal(2);\n\t\t\texecutionCount = 0;\n\t\t\tfunctions.removeFunction(func2);\n\t\t\tfunctions.trigger();\n\t\t\texpect(executionCount).equal(1);\n\t\t});\n\t\tit('Should execute callback after all functions are executed', (done)=>{\n\t\t\tfunctions.addFunction(func1, null, true);\n\t\t\tfunctions.addFunction(func2);\n\t\t\tfunctions.trigger(()=>{\n\t\t\t\texpect(executionCount).equal(2);\n\t\t\t\tdone();\n\t\t\t});\n\t\t\texpect(executionCount).equal(1);\n\t\t});\n\t\tit('Should execute connector after callback ', (done)=>{\n\t\t\tfunctions.addFunction(func1, null, true);\n\t\t\tfunctions.addFunction(func2);\n\t\t\tfunctions.trigger(()=>{\n\t\t\t\texpect(connectorExecuted).equal(0);\n\t\t\t\texpect(executionCount).equal(2);\n\t\t\t\tsetTimeout(()=>{\n\t\t\t\t\texpect(connectorExecuted).equal(1);\n\t\t\t\t\tdone();\n\t\t\t\t},0);\n\t\t\t});\n\t\t\texpect(executionCount).equal(1);\n\t\t});\n\n\t});\n\tdescribe('setConnector', ()=>{\n\t\tit('Should add new connector ', ()=>{\n\t\t\tfunctions.removeConnector(connector);\n\t\t\texpect(functions.connector).equal(null);\n\t\t\tfunctions.setConnector(connector);\n\t\t\texpect(functions.connector).equal(connector);\n\t\t});\n\t\tit('if we set connector in the middle of execution, connector should wait till the current trigger get completed', (done)=>{\n\t\t\tfunctions.removeConnector(connector);\n\t\t\texpect(functions.connector).equal(null);\n\t\t\tfunctions.addFunction(func1, null, true);\n\t\t\tfunctions.addFunction(func2, null, true);\n\t\t\tfunctions.trigger(()=>{\n\t\t\t\texpect(executionCount).equal(2);\n\t\t\t\texpect(functions.connector).equal(null);\n\t\t\t});\n\t\t\tfunctions.setConnector(connector);\n\t\t\texpect(functions.connector).equal(null);\n\t\t\tfunctions.trigger(()=>{\n\t\t\t\texpect(connectorExecuted).equal(0);\n\t\t\t\texpect(functions.connector).equal(connector);\n\t\t\t\texpect(executionCount).equal(4);\n\t\t\t\tsetTimeout(()=>{\n\t\t\t\t\texpect(connectorExecuted).equal(1);\n\t\t\t\t\tdone();\n\t\t\t\t},0);\n\t\t\t});\n\t\t});\n\t});\n\tdescribe('removeConnector', ()=>{\n\t\tit('Should remove the connector ', ()=>{\n\t\t\tfunctions.removeConnector(connector);\n\t\t\texpect(functions.connector).equal(null);\n\t\t});\n\t\tit('if we set connector in the middle of execution, connector should wait till the current trigger get completed', (done)=>{\n\t\t\tfunctions.addFunction(func1, null, true);\n\t\t\tfunctions.addFunction(func2, null, true);\n\t\t\tfunctions.trigger(()=>{\n\t\t\t\texpect(connectorExecuted).equal(0);\n\t\t\t\texpect(executionCount).equal(2);\n\t\t\t\tsetTimeout(()=>{\n\t\t\t\t\texpect(connectorExecuted).equal(1);\n\t\t\t\t\tconnectorExecuted = 0;\n\t\t\t\t},0);\n\t\t\t});\n\t\t\tfunctions.removeConnector(connector);\n\t\t\texpect(functions.connector).equal(connector);\n\t\t\tfunctions.trigger(()=>{\n\t\t\t\texpect(functions.connector).equal(null);\n\t\t\t\texpect(connectorExecuted).equal(0);\n\t\t\t\texpect(executionCount).equal(4);\n\t\t\t\tsetTimeout(()=>{\n\t\t\t\t\texpect(connectorExecuted).equal(0);\n\t\t\t\t\tdone();\n\t\t\t\t},0);\n\t\t\t});\n\t\t});\n\t});\n\tdescribe('linkConnector', ()=>{\n\t\tit('Should execute connector after all functions are executed ', (done)=>{\n\t\t\tfunctions.linkConnector(connector);\n\t\t\tfunctions.addFunction(func1);\n\t\t\tfunctions.addFunction(func2);\n\t\t\tfunctions.trigger(()=>{\n\t\t\t\texpect(connectorExecuted).equal(0);\n\t\t\t\texpect(executionCount).equal(2);\n\t\t\t\tsetTimeout(()=>{\n\t\t\t\t\texpect(connectorExecuted).equal(1);\n\t\t\t\t\tdone();\n\t\t\t\t},0);\n\t\t\t});\n\t\t});\n\t\tit('if we add connector in the middle of execution, connector should not execute for the current trigger and execute for next trigger', (done)=>{\n\t\t\tfunctions.unLinkConnector(connector);\n\t\t\tfunctions.addFunction(func1, null, true);\n\t\t\tfunctions.addFunction(func2, null, true);\n\t\t\tfunctions.trigger(()=>{\n\t\t\t\texpect(connectorExecuted).equal(0);\n\t\t\t\texpect(executionCount).equal(2);\n\t\t\t\tsetTimeout(()=>{\n\t\t\t\t\texpect(connectorExecuted).equal(0);\n\t\t\t\t},0);\n\t\t\t});\n\t\t\tfunctions.linkConnector(connector);\n\t\t\tfunctions.trigger(()=>{\n\t\t\t\texpect(connectorExecuted).equal(0);\n\t\t\t\texpect(executionCount).equal(4);\n\t\t\t\tsetTimeout(()=>{\n\t\t\t\t\texpect(connectorExecuted).equal(1);\n\t\t\t\t\tdone();\n\t\t\t\t},0);\n\t\t\t});\n\t\t});\n\t})\n\tdescribe('unLinkConnector', ()=>{\n\t\tit('Should not execute connector if removed ', (done)=>{\n\t\t\tfunctions.unLinkConnector(connector);\n\t\t\tfunctions.addFunction(func1);\n\t\t\tfunctions.addFunction(func2);\n\t\t\tfunctions.trigger(()=>{\n\t\t\t\texpect(connectorExecuted).equal(0);\n\t\t\t\texpect(executionCount).equal(2);\n\t\t\t\tsetTimeout(()=>{\n\t\t\t\t\texpect(connectorExecuted).equal(0);\n\t\t\t\t\tdone();\n\t\t\t\t},0);\n\t\t\t});\n\t\t});\n\t\tit('if we unlink connector in the middle of execution, connector should still execute for the current trigger and not for next trigger', (done)=>{\n\t\t\tfunctions.addFunction(func1, null, true);\n\t\t\tfunctions.addFunction(func2, null, true);\n\t\t\tfunctions.trigger(()=>{\n\t\t\t\texpect(connectorExecuted).equal(0);\n\t\t\t\texpect(executionCount).equal(2);\n\t\t\t\tsetTimeout(()=>{\n\t\t\t\t\texpect(connectorExecuted).equal(1);\n\t\t\t\t\tconnectorExecuted = 0;\n\t\t\t\t},0);\n\t\t\t});\n\t\t\tfunctions.unLinkConnector(connector);\n\t\t\tfunctions.trigger(()=>{\n\t\t\t\texpect(connectorExecuted).equal(0);\n\t\t\t\texpect(executionCount).equal(4);\n\t\t\t\tsetTimeout(()=>{\n\t\t\t\t\texpect(connectorExecuted).equal(0);\n\t\t\t\t\tdone();\n\t\t\t\t},0);\n\t\t\t});\n\t\t});\n\t})\n});",
+    "static": true,
+    "longname": "/home/travis/build/StateTree/functions/test/functions.test.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 88,
+    "kind": "test",
+    "name": "describe0",
+    "testId": 0,
+    "memberof": "test/functions.test.js",
+    "testDepth": 0,
+    "static": true,
+    "longname": "test/functions.test.js~describe0",
+    "access": null,
+    "description": "API",
+    "lineNumber": 7
+  },
+  {
+    "__docId__": 89,
+    "kind": "test",
+    "name": "describe1",
+    "testId": 1,
+    "memberof": "test/functions.test.js~describe0",
+    "testDepth": 1,
+    "static": true,
+    "longname": "test/functions.test.js~describe0.describe1",
+    "access": null,
+    "description": "addFunction",
+    "lineNumber": 23
+  },
+  {
+    "__docId__": 90,
+    "kind": "test",
+    "name": "it2",
+    "testId": 2,
+    "memberof": "test/functions.test.js~describe0.describe1",
+    "testDepth": 2,
+    "static": true,
+    "longname": "test/functions.test.js~describe0.describe1.it2",
+    "access": null,
+    "description": "Should add function to entries array by default",
+    "lineNumber": 24
+  },
+  {
+    "__docId__": 91,
+    "kind": "test",
+    "name": "it3",
+    "testId": 3,
+    "memberof": "test/functions.test.js~describe0.describe1",
+    "testDepth": 2,
+    "static": true,
+    "longname": "test/functions.test.js~describe0.describe1.it3",
+    "access": null,
+    "description": "Should add function to tickerEntries array if executeInCycle is set to true",
+    "lineNumber": 32
+  },
+  {
+    "__docId__": 92,
+    "kind": "test",
+    "name": "it4",
+    "testId": 4,
+    "memberof": "test/functions.test.js~describe0.describe1",
+    "testDepth": 2,
+    "static": true,
+    "longname": "test/functions.test.js~describe0.describe1.it4",
+    "access": null,
+    "description": "should not execute the function",
+    "lineNumber": 40
+  },
+  {
+    "__docId__": 93,
+    "kind": "test",
+    "name": "it5",
+    "testId": 5,
+    "memberof": "test/functions.test.js~describe0.describe1",
+    "testDepth": 2,
+    "static": true,
+    "longname": "test/functions.test.js~describe0.describe1.it5",
+    "access": null,
+    "description": "if function execution in progress, should add after completion",
+    "lineNumber": 44
+  },
+  {
+    "__docId__": 94,
+    "kind": "test",
+    "name": "it6",
+    "testId": 6,
+    "memberof": "test/functions.test.js~describe0.describe1",
+    "testDepth": 2,
+    "static": true,
+    "longname": "test/functions.test.js~describe0.describe1.it6",
+    "access": null,
+    "description": "callback should be called after adding",
+    "lineNumber": 60
+  },
+  {
+    "__docId__": 95,
+    "kind": "test",
+    "name": "describe7",
+    "testId": 7,
+    "memberof": "test/functions.test.js~describe0",
+    "testDepth": 1,
+    "static": true,
+    "longname": "test/functions.test.js~describe0.describe7",
+    "access": null,
+    "description": "removeFunction",
+    "lineNumber": 74
+  },
+  {
+    "__docId__": 96,
+    "kind": "test",
+    "name": "it8",
+    "testId": 8,
+    "memberof": "test/functions.test.js~describe0.describe7",
+    "testDepth": 2,
+    "static": true,
+    "longname": "test/functions.test.js~describe0.describe7.it8",
+    "access": null,
+    "description": "Should remove function to entries array by default",
+    "lineNumber": 75
+  },
+  {
+    "__docId__": 97,
+    "kind": "test",
+    "name": "it9",
+    "testId": 9,
+    "memberof": "test/functions.test.js~describe0.describe7",
+    "testDepth": 2,
+    "static": true,
+    "longname": "test/functions.test.js~describe0.describe7.it9",
+    "access": null,
+    "description": "Should add function to tickerEntries array if executeLaterInNextTick is set to true",
+    "lineNumber": 83
+  },
+  {
+    "__docId__": 98,
+    "kind": "test",
+    "name": "it10",
+    "testId": 10,
+    "memberof": "test/functions.test.js~describe0.describe7",
+    "testDepth": 2,
+    "static": true,
+    "longname": "test/functions.test.js~describe0.describe7.it10",
+    "access": null,
+    "description": "if function execution in progress, should remove after completion",
+    "lineNumber": 91
+  },
+  {
+    "__docId__": 99,
+    "kind": "test",
+    "name": "it11",
+    "testId": 11,
+    "memberof": "test/functions.test.js~describe0.describe7",
+    "testDepth": 2,
+    "static": true,
+    "longname": "test/functions.test.js~describe0.describe7.it11",
+    "access": null,
+    "description": "callback should be called after removing",
+    "lineNumber": 104
+  },
+  {
+    "__docId__": 100,
+    "kind": "test",
+    "name": "describe12",
+    "testId": 12,
+    "memberof": "test/functions.test.js~describe0",
+    "testDepth": 1,
+    "static": true,
+    "longname": "test/functions.test.js~describe0.describe12",
+    "access": null,
+    "description": "trigger",
+    "lineNumber": 119
+  },
+  {
+    "__docId__": 101,
+    "kind": "test",
+    "name": "it13",
+    "testId": 13,
+    "memberof": "test/functions.test.js~describe0.describe12",
+    "testDepth": 2,
+    "static": true,
+    "longname": "test/functions.test.js~describe0.describe12.it13",
+    "access": null,
+    "description": "Should execute all added functions ",
+    "lineNumber": 120
+  },
+  {
+    "__docId__": 102,
+    "kind": "test",
+    "name": "it14",
+    "testId": 14,
+    "memberof": "test/functions.test.js~describe0.describe12",
+    "testDepth": 2,
+    "static": true,
+    "longname": "test/functions.test.js~describe0.describe12.it14",
+    "access": null,
+    "description": "Should execute callback after all functions are executed",
+    "lineNumber": 130
+  },
+  {
+    "__docId__": 103,
+    "kind": "test",
+    "name": "it15",
+    "testId": 15,
+    "memberof": "test/functions.test.js~describe0.describe12",
+    "testDepth": 2,
+    "static": true,
+    "longname": "test/functions.test.js~describe0.describe12.it15",
+    "access": null,
+    "description": "Should execute connector after callback ",
+    "lineNumber": 139
+  },
+  {
+    "__docId__": 104,
+    "kind": "test",
+    "name": "describe16",
+    "testId": 16,
+    "memberof": "test/functions.test.js~describe0",
+    "testDepth": 1,
+    "static": true,
+    "longname": "test/functions.test.js~describe0.describe16",
+    "access": null,
+    "description": "setConnector",
+    "lineNumber": 154
+  },
+  {
+    "__docId__": 105,
+    "kind": "test",
+    "name": "it17",
+    "testId": 17,
+    "memberof": "test/functions.test.js~describe0.describe16",
+    "testDepth": 2,
+    "static": true,
+    "longname": "test/functions.test.js~describe0.describe16.it17",
+    "access": null,
+    "description": "Should add new connector ",
+    "lineNumber": 155
+  },
+  {
+    "__docId__": 106,
+    "kind": "test",
+    "name": "it18",
+    "testId": 18,
+    "memberof": "test/functions.test.js~describe0.describe16",
+    "testDepth": 2,
+    "static": true,
+    "longname": "test/functions.test.js~describe0.describe16.it18",
+    "access": null,
+    "description": "if we set connector in the middle of execution, connector should wait till the current trigger get completed",
+    "lineNumber": 161
+  },
+  {
+    "__docId__": 107,
+    "kind": "test",
+    "name": "describe19",
+    "testId": 19,
+    "memberof": "test/functions.test.js~describe0",
+    "testDepth": 1,
+    "static": true,
+    "longname": "test/functions.test.js~describe0.describe19",
+    "access": null,
+    "description": "removeConnector",
+    "lineNumber": 183
+  },
+  {
+    "__docId__": 108,
+    "kind": "test",
+    "name": "it20",
+    "testId": 20,
+    "memberof": "test/functions.test.js~describe0.describe19",
+    "testDepth": 2,
+    "static": true,
+    "longname": "test/functions.test.js~describe0.describe19.it20",
+    "access": null,
+    "description": "Should remove the connector ",
+    "lineNumber": 184
+  },
+  {
+    "__docId__": 109,
+    "kind": "test",
+    "name": "it21",
+    "testId": 21,
+    "memberof": "test/functions.test.js~describe0.describe19",
+    "testDepth": 2,
+    "static": true,
+    "longname": "test/functions.test.js~describe0.describe19.it21",
+    "access": null,
+    "description": "if we set connector in the middle of execution, connector should wait till the current trigger get completed",
+    "lineNumber": 188
+  },
+  {
+    "__docId__": 110,
+    "kind": "test",
+    "name": "describe22",
+    "testId": 22,
+    "memberof": "test/functions.test.js~describe0",
+    "testDepth": 1,
+    "static": true,
+    "longname": "test/functions.test.js~describe0.describe22",
+    "access": null,
+    "description": "linkConnector",
+    "lineNumber": 212
+  },
+  {
+    "__docId__": 111,
+    "kind": "test",
+    "name": "it23",
+    "testId": 23,
+    "memberof": "test/functions.test.js~describe0.describe22",
+    "testDepth": 2,
+    "static": true,
+    "longname": "test/functions.test.js~describe0.describe22.it23",
+    "access": null,
+    "description": "Should execute connector after all functions are executed ",
+    "lineNumber": 213
+  },
+  {
+    "__docId__": 112,
+    "kind": "test",
+    "name": "it24",
+    "testId": 24,
+    "memberof": "test/functions.test.js~describe0.describe22",
+    "testDepth": 2,
+    "static": true,
+    "longname": "test/functions.test.js~describe0.describe22.it24",
+    "access": null,
+    "description": "if we add connector in the middle of execution, connector should not execute for the current trigger and execute for next trigger",
+    "lineNumber": 226
+  },
+  {
+    "__docId__": 113,
+    "kind": "test",
+    "name": "describe25",
+    "testId": 25,
+    "memberof": "test/functions.test.js~describe0",
+    "testDepth": 1,
+    "static": true,
+    "longname": "test/functions.test.js~describe0.describe25",
+    "access": null,
+    "description": "unLinkConnector",
+    "lineNumber": 248
+  },
+  {
+    "__docId__": 114,
+    "kind": "test",
+    "name": "it26",
+    "testId": 26,
+    "memberof": "test/functions.test.js~describe0.describe25",
+    "testDepth": 2,
+    "static": true,
+    "longname": "test/functions.test.js~describe0.describe25.it26",
+    "access": null,
+    "description": "Should not execute connector if removed ",
+    "lineNumber": 249
+  },
+  {
+    "__docId__": 115,
+    "kind": "test",
+    "name": "it27",
+    "testId": 27,
+    "memberof": "test/functions.test.js~describe0.describe25",
+    "testDepth": 2,
+    "static": true,
+    "longname": "test/functions.test.js~describe0.describe25.it27",
+    "access": null,
+    "description": "if we unlink connector in the middle of execution, connector should still execute for the current trigger and not for next trigger",
+    "lineNumber": 262
+  }
+]

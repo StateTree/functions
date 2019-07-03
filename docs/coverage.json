@@ -1,0 +1,42 @@
+{
+  "coverage": "45.16%",
+  "expectCount": 31,
+  "actualCount": 14,
+  "files": {
+    "lib/entry.js": {
+      "expectCount": 5,
+      "actualCount": 0,
+      "undocumentLines": [
+        5,
+        6,
+        7,
+        8,
+        13
+      ]
+    },
+    "lib/functions.js": {
+      "expectCount": 20,
+      "actualCount": 12,
+      "undocumentLines": [
+        5,
+        14,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ]
+    },
+    "lib/helpers.js": {
+      "expectCount": 6,
+      "actualCount": 2,
+      "undocumentLines": [
+        27,
+        63,
+        73,
+        83
+      ]
+    }
+  }
+}

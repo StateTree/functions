@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">test/functions.test.js | @statetree/functions</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="cluster of function that can be chained to create a pipeline "><meta property="twitter:card" content="summary"><meta property="twitter:title" content="@statetree/functions"><meta property="twitter:description" content="cluster of function that can be chained to create a pipeline "></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/StateTree/functions"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/entry.js~Entry.html">Entry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/functions.js~Functions.html">Functions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-disposeAndRemoveEntry">disposeAndRemoveEntry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-executeAsync">executeAsync</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-executeEntries">executeEntries</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-executeInSyncOrAsync">executeInSyncOrAsync</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">test/functions.test.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {expect} from &apos;chai&apos;;
+import Functions from &apos;./../src/lib/functions&apos;
+
+let functions, func1, func2, func3, func4, connector;
+let executionCount = 0;
+let connectorExecuted = 0;
+describe (&apos;API&apos;, ()=&gt;{
+	beforeEach(()=&gt;{
+		func1 = function(){executionCount++};
+		func2 = function(){executionCount++};
+		func3 = function(){executionCount++};
+		func4 = function(){executionCount++};
+		connector = function(){ connectorExecuted = 1;};
+		functions = new Functions(connector);
+	});
+
+	afterEach(()=&gt;{
+		functions = null;
+		executionCount = 0;
+		connectorExecuted = 0;
+	});
+
+	describe(&apos;addFunction&apos;, ()=&gt;{
+		it(&apos;Should add function to entries array by default&apos;, ()=&gt;{
+			functions.addFunction(func1);
+			expect(functions._entries.length).equal(1);
+			expect(functions._tickerEntries.length).equal(0);
+			functions.addFunction(func2);
+			expect(functions._entries.length).equal(2);
+			expect(functions._tickerEntries.length).equal(0);
+		});
+		it(&apos;Should add function to tickerEntries array if executeInCycle is set to true&apos;, ()=&gt;{
+			functions.addFunction(func3, null, true);
+			expect(functions._tickerEntries.length).equal(1);
+			expect(functions._entries.length).equal(0);
+			functions.addFunction(func4,  null, true);
+			expect(functions._tickerEntries.length).equal(2);
+			expect(functions._entries.length).equal(0);
+		});
+		it(&apos;should not execute the function&apos;, ()=&gt;{
+			functions.addFunction(func1);
+			expect(executionCount).equal(0);
+		});
+		it(&apos;if function execution in progress, should add after completion&apos;, (done)=&gt;{
+			functions.addFunction(func1, null, true);
+			functions.addFunction(func2, null, true);
+			functions.trigger();
+			functions.addFunction(func3);
+			functions.addFunction(func4, null, true);
+			expect(functions.remainingEntries).equal(2);
+			expect(functions._tickerEntries.length).equal(2);
+			expect(functions._entries.length).equal(0);
+			setTimeout(()=&gt;{
+				expect(functions.remainingEntries).equal(0);
+				expect(functions._tickerEntries.length).equal(3);
+				expect(functions._entries.length).equal(1);
+				done();
+			},0);
+		});
+		it(&apos;callback should be called after adding&apos;, (done)=&gt;{
+			expect(functions._entries.length).equal(0);
+			functions.addFunction(func1, null, false, 0 , ()=&gt;{
+				expect(functions._entries.length).equal(1);
+			});
+
+			expect(functions._tickerEntries.length).equal(0);
+			functions.addFunction(func2, null, true, 0 , ()=&gt;{
+				expect(functions._tickerEntries.length).equal(1);
+				done();
+			});
+
+		});
+	})
+	describe(&apos;removeFunction&apos;, ()=&gt;{
+		it(&apos;Should remove function to entries array by default&apos;, ()=&gt;{
+			functions.addFunction(func1);
+			expect(functions._entries.length).equal(1);
+			functions.addFunction(func2);
+			expect(functions._entries.length).equal(2);
+			functions.removeFunction(func1);
+			expect(functions._entries.length).equal(1);
+		});
+		it(&apos;Should add function to tickerEntries array if executeLaterInNextTick is set to true&apos;, ()=&gt;{
+			functions.addFunction(func3, null, true);
+			expect(functions._tickerEntries.length).equal(1);
+			functions.addFunction(func4,  null, true);
+			expect(functions._tickerEntries.length).equal(2);
+			functions.removeFunction(func3);
+			expect(functions._tickerEntries.length).equal(1);
+		});
+		it(&apos;if function execution in progress, should remove after completion&apos;, (done)=&gt;{
+			functions.addFunction(func1, null, true);
+			functions.addFunction(func2, null, true);
+			functions.trigger();
+			functions.removeFunction(func1);
+			expect(functions.remainingEntries).equal(2);
+			expect(functions._tickerEntries.length).equal(2);
+			setTimeout(()=&gt;{
+				expect(functions.remainingEntries).equal(0);
+				expect(functions._tickerEntries.length).equal(1);
+				done();
+			},0);
+		});
+		it(&apos;callback should be called after removing&apos;, (done)=&gt;{
+			functions.addFunction(func1);
+			functions.addFunction(func2,null, true);
+			expect(functions._entries.length).equal(1);
+			expect(functions._tickerEntries.length).equal(1);
+			functions.removeFunction(func1, null, ()=&gt;{
+				expect(functions._entries.length).equal(0);
+			})
+			functions.removeFunction(func2, null, ()=&gt;{
+				expect(functions._tickerEntries.length).equal(0);
+				done()
+			})
+
+		});
+	})
+	describe(&apos;trigger&apos;, ()=&gt;{
+		it(&apos;Should execute all added functions &apos;, ()=&gt;{
+			functions.addFunction(func1);
+			functions.addFunction(func2);
+			functions.trigger();
+			expect(executionCount).equal(2);
+			executionCount = 0;
+			functions.removeFunction(func2);
+			functions.trigger();
+			expect(executionCount).equal(1);
+		});
+		it(&apos;Should execute callback after all functions are executed&apos;, (done)=&gt;{
+			functions.addFunction(func1, null, true);
+			functions.addFunction(func2);
+			functions.trigger(()=&gt;{
+				expect(executionCount).equal(2);
+				done();
+			});
+			expect(executionCount).equal(1);
+		});
+		it(&apos;Should execute connector after callback &apos;, (done)=&gt;{
+			functions.addFunction(func1, null, true);
+			functions.addFunction(func2);
+			functions.trigger(()=&gt;{
+				expect(connectorExecuted).equal(0);
+				expect(executionCount).equal(2);
+				setTimeout(()=&gt;{
+					expect(connectorExecuted).equal(1);
+					done();
+				},0);
+			});
+			expect(executionCount).equal(1);
+		});
+
+	});
+	describe(&apos;setConnector&apos;, ()=&gt;{
+		it(&apos;Should add new connector &apos;, ()=&gt;{
+			functions.removeConnector(connector);
+			expect(functions.connector).equal(null);
+			functions.setConnector(connector);
+			expect(functions.connector).equal(connector);
+		});
+		it(&apos;if we set connector in the middle of execution, connector should wait till the current trigger get completed&apos;, (done)=&gt;{
+			functions.removeConnector(connector);
+			expect(functions.connector).equal(null);
+			functions.addFunction(func1, null, true);
+			functions.addFunction(func2, null, true);
+			functions.trigger(()=&gt;{
+				expect(executionCount).equal(2);
+				expect(functions.connector).equal(null);
+			});
+			functions.setConnector(connector);
+			expect(functions.connector).equal(null);
+			functions.trigger(()=&gt;{
+				expect(connectorExecuted).equal(0);
+				expect(functions.connector).equal(connector);
+				expect(executionCount).equal(4);
+				setTimeout(()=&gt;{
+					expect(connectorExecuted).equal(1);
+					done();
+				},0);
+			});
+		});
+	});
+	describe(&apos;removeConnector&apos;, ()=&gt;{
+		it(&apos;Should remove the connector &apos;, ()=&gt;{
+			functions.removeConnector(connector);
+			expect(functions.connector).equal(null);
+		});
+		it(&apos;if we set connector in the middle of execution, connector should wait till the current trigger get completed&apos;, (done)=&gt;{
+			functions.addFunction(func1, null, true);
+			functions.addFunction(func2, null, true);
+			functions.trigger(()=&gt;{
+				expect(connectorExecuted).equal(0);
+				expect(executionCount).equal(2);
+				setTimeout(()=&gt;{
+					expect(connectorExecuted).equal(1);
+					connectorExecuted = 0;
+				},0);
+			});
+			functions.removeConnector(connector);
+			expect(functions.connector).equal(connector);
+			functions.trigger(()=&gt;{
+				expect(functions.connector).equal(null);
+				expect(connectorExecuted).equal(0);
+				expect(executionCount).equal(4);
+				setTimeout(()=&gt;{
+					expect(connectorExecuted).equal(0);
+					done();
+				},0);
+			});
+		});
+	});
+	describe(&apos;linkConnector&apos;, ()=&gt;{
+		it(&apos;Should execute connector after all functions are executed &apos;, (done)=&gt;{
+			functions.linkConnector(connector);
+			functions.addFunction(func1);
+			functions.addFunction(func2);
+			functions.trigger(()=&gt;{
+				expect(connectorExecuted).equal(0);
+				expect(executionCount).equal(2);
+				setTimeout(()=&gt;{
+					expect(connectorExecuted).equal(1);
+					done();
+				},0);
+			});
+		});
+		it(&apos;if we add connector in the middle of execution, connector should not execute for the current trigger and execute for next trigger&apos;, (done)=&gt;{
+			functions.unLinkConnector(connector);
+			functions.addFunction(func1, null, true);
+			functions.addFunction(func2, null, true);
+			functions.trigger(()=&gt;{
+				expect(connectorExecuted).equal(0);
+				expect(executionCount).equal(2);
+				setTimeout(()=&gt;{
+					expect(connectorExecuted).equal(0);
+				},0);
+			});
+			functions.linkConnector(connector);
+			functions.trigger(()=&gt;{
+				expect(connectorExecuted).equal(0);
+				expect(executionCount).equal(4);
+				setTimeout(()=&gt;{
+					expect(connectorExecuted).equal(1);
+					done();
+				},0);
+			});
+		});
+	})
+	describe(&apos;unLinkConnector&apos;, ()=&gt;{
+		it(&apos;Should not execute connector if removed &apos;, (done)=&gt;{
+			functions.unLinkConnector(connector);
+			functions.addFunction(func1);
+			functions.addFunction(func2);
+			functions.trigger(()=&gt;{
+				expect(connectorExecuted).equal(0);
+				expect(executionCount).equal(2);
+				setTimeout(()=&gt;{
+					expect(connectorExecuted).equal(0);
+					done();
+				},0);
+			});
+		});
+		it(&apos;if we unlink connector in the middle of execution, connector should still execute for the current trigger and not for next trigger&apos;, (done)=&gt;{
+			functions.addFunction(func1, null, true);
+			functions.addFunction(func2, null, true);
+			functions.trigger(()=&gt;{
+				expect(connectorExecuted).equal(0);
+				expect(executionCount).equal(2);
+				setTimeout(()=&gt;{
+					expect(connectorExecuted).equal(1);
+					connectorExecuted = 0;
+				},0);
+			});
+			functions.unLinkConnector(connector);
+			functions.trigger(()=&gt;{
+				expect(connectorExecuted).equal(0);
+				expect(executionCount).equal(4);
+				setTimeout(()=&gt;{
+					expect(connectorExecuted).equal(0);
+					done();
+				},0);
+			});
+		});
+	})
+});</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
