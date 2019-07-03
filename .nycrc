@@ -21,5 +21,9 @@
     "check-coverage": true,
     "all": true,
     "sourceMap": false,
-    "instrument": false
+    "instrument": false,
+    "branches": 80,
+    "lines": 80,
+    "functions": 80,
+    "statements": 80
 }

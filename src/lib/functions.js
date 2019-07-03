@@ -1,5 +1,5 @@
 import Ticker from '@statetree/ticker';
-import {executeInSyncOrAsync, executeEntries, disposeAndRemoveEntry} from './helpers';
+import {executeInSyncOrAsync, executeEntries, disposeAndRemoveEntry,executeAsync} from './helpers';
 import Entry from './entry';
 
 function getTickerEntry(func, context, priority, errorCallback, funcsInst){
@@ -24,8 +24,8 @@ export default class Functions {
 	 * Based on return value of predicate, this function decides whether to execute the method immediately or in frame cycle
 	 *
 	 * @param {function} apiFunc
-	 * @param {function} callback, Api func execution may be sync or Async, if its sync we cant return notifier as user can register doneCallback after API invocation
-	 * @param {function} errorCallback.
+	 * @param {function} callback Api func execution may be sync or Async, if its sync we cant return notifier as user can register doneCallback after API invocation
+	 * @param {function} errorCallback
 	 * @return {void}
 	 */
 	executeWhenIdle(apiFunc, callback, errorCallback){
@@ -40,6 +40,22 @@ export default class Functions {
 		}
 		executeInSyncOrAsync(predicate, apiFunc, callback, errorCallback);
 	};
+
+	/**
+	 * Based on return value of predicate, this function decides whether to execute the method in immediate frame cycle or following cycle
+	 *
+	 * @param {function} apiFunc
+	 * @return {object} notifier
+	 */
+	executeAsyncWhenIdle(apiFunc){
+		const predicate = ()=>{
+			if(this.remainingEntries < 0){
+				throw new Error("There can't be negative entries")
+			}
+			return this.remainingEntries === 0;
+		};
+		return executeAsync(predicate, apiFunc)
+	}
 
 	/**
 	 * execute all the entries
@@ -184,7 +200,6 @@ export default class Functions {
 			this._enableConnector = true;
 		};
 		this.executeWhenIdle(_linkConnector);
-
 	}
 
 	/**
